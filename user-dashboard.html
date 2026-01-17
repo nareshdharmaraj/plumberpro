@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Plumberpro Plumbing</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra-styles.css">
+    <link rel="stylesheet" href="dashboard-mobile.css">
+    <style>
+        /* Dashboard Layout Fixes for Desktop - Full Width (No Sidebar) */
+        @media (min-width: 993px) {
+            .dashboard-container {
+                display: block !important;
+                min-height: calc(100vh - var(--navbar-height));
+                padding-top: var(--navbar-height);
+                position: relative;
+                width: 100%;
+                background: var(--bg-secondary) !important;
+            }
+
+            .dashboard-main {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 2rem;
+                background: var(--bg-secondary);
+                min-height: calc(100vh - var(--navbar-height));
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        /* Ensure content visibility - Critical Fixes */
+        .dashboard-view {
+            width: 100%;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-view.active {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sub-Navbar Styles */
+        .sub-navbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sub-nav-item {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            opacity: 0.7;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        /* Ensure visibility in dashboard header */
+        .dashboard-header .sub-nav-item {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .dashboard-header .sub-nav-item:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dashboard-header .sub-nav-item.active {
+            color: #ffffff !important;
+            opacity: 1;
+            border-bottom-color: #ffffff !important;
+        }
+
+        .sub-nav-item:hover {
+            color: var(--primary);
+            background: rgba(255, 107, 53, 0.05);
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        .sub-nav-item.active {
+            color: var(--primary);
+            opacity: 1;
+            border-bottom-color: var(--primary);
+        }
+
+        .sub-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .sub-tab-content.active {
+            display: block;
+        }
+
+        /* Chart Control Interactivity */
+        .chart-control-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .chart-control-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* RTL/LTR Responsive Helper */
+        [dir="rtl"] .sub-navbar {
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><span class="brand-logo-box">P</span>Plumberpro</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+                        <li><a href="home2.html" class="dropdown-item">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About Us</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html" class="dropdown-item">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+            </ul>
+            <div class="navbar-controls">
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="rtl-toggle" title="Toggle RTL"></button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+
+        <main class="dashboard-main">
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="dashboard-view active" style="display: block;">
+                <div class="dashboard-header" style="margin-bottom: 2rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div>
+                                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #ffffff;">
+                                    Welcome
+                                    Back,
+                                    John!</h1>
+                                <p style="font-size: 1.125rem; color: #ffffff;">Here's your
+                                    service
+                                    overview</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> New Service Request
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sub-navbar">
+                    <button class="sub-nav-item active" onclick="switchSubView('overview')">General Overview</button>
+                    <button class="sub-nav-item" onclick="switchSubView('usage')">Usage Analytics</button>
+                    <button class="sub-nav-item" onclick="switchSubView('billing')">Billing & Payments</button>
+                </div>
+
+                <!-- General Overview Content -->
+                <div id="sub-view-overview" class="sub-tab-content active">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-header">
+                                <span class="dashboard-card-title">Active Requests</span>
+                                <i class="fas fa-clipboard-list" style="color: var(--primary); font-size: 1.5rem;"></i>
+                            </div>
+                            <div class="dashboard-card-value">3</div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                <i class="fas fa-arrow-up" style="color: var(--success);"></i> 2 new this week
+                            </p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-header">
+                                <span class="dashboard-card-title">Completed</span>
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.5rem;"></i>
+                            </div>
+                            <div class="dashboard-card-value">12</div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                Total services completed
+                            </p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-header">
+                                <span class="dashboard-card-title">Upcoming</span>
+                                <i class="fas fa-calendar" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            </div>
+                            <div class="dashboard-card-value">1</div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                Scheduled for next week
+                            </p>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-header">
+                                <span class="dashboard-card-title">Saved Addresses</span>
+                                <i class="fas fa-map-marker-alt" style="color: var(--warning); font-size: 1.5rem;"></i>
+                            </div>
+                            <div class="dashboard-card-value">2</div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                Properties on file
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div class="card scroll-reveal">
+                            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Service History</h2>
+                            <canvas id="requestsChart" style="width: 100%; height: 250px;"></canvas>
+                        </div>
+
+                        <div class="card scroll-reveal">
+                            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Monthly Overview</h2>
+                            <canvas id="monthlyChart" style="width: 100%; height: 250px;"></canvas>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div class="card scroll-reveal">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                <h2 style="font-size: 1.5rem;">Efficiency Score</h2>
+                                <div
+                                    style="background: var(--bg-secondary); padding: 0.25rem; border-radius: 0.5rem; display: flex; gap: 0.25rem;">
+                                    <button class="btn btn-sm active-chart-filter"
+                                        onclick="updateEfficiency(this, '1M')"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: white; color: var(--primary);">1M</button>
+                                    <button class="btn btn-sm" onclick="updateEfficiency(this, '6M')"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: transparent; color: var(--text-secondary);">6M</button>
+                                    <button class="btn btn-sm" onclick="updateEfficiency(this, '1Y')"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: transparent; color: var(--text-secondary);">1Y</button>
+                                </div>
+                            </div>
+                            <canvas id="efficiencyChart" style="width: 100%; height: 250px;"></canvas>
+                            <div style="text-align: center; margin-top: 1rem;">
+                                <span style="font-size: 2rem; font-weight: 800; color: var(--success);">A+</span>
+                                <p style="color: var(--text-secondary);">Your home efficiency rating</p>
+                            </div>
+                        </div>
+
+                        <div class="card scroll-reveal">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                <h2 style="font-size: 1.5rem;">Water Usage Analysis</h2>
+                                <div
+                                    style="background: var(--bg-secondary); padding: 0.25rem; border-radius: 0.5rem; display: flex; gap: 0.25rem;">
+                                    <button class="btn btn-sm active-chart-filter"
+                                        onclick="updateWaterUsage(this, 'Week')"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: white; color: var(--primary);">Week</button>
+                                    <button class="btn btn-sm" onclick="updateWaterUsage(this, 'Month')"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: transparent; color: var(--text-secondary);">Month</button>
+                                </div>
+                            </div>
+                            <canvas id="waterUsageChart" style="width: 100%; height: 250px;"></canvas>
+                            <div style="margin-top: 1rem; display: flex; justify-content: space-around;">
+                                <div style="text-align: center;">
+                                    <span style="display: block; font-weight: 700;">1,240 Gal</span>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Total Consumed</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <span style="display: block; font-weight: 700; color: var(--success);">-12%</span>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">vs Last Month</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-2" style="gap: 2rem;">
+                            <div class="card">
+                                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Peak Usage Times</h3>
+                                <canvas id="overviewPeakUsageChart" style="width: 100%; height: 250px;"></canvas>
+                                <div
+                                    style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Highest activity
+                                        usually recorded between <span
+                                            style="color: var(--primary); font-weight: 600;">6 PM - 9 PM</span>.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Efficiency Rating Breakdown</h3>
+                                <canvas id="overviewEfficiencyDetailChart" style="width: 100%; height: 250px;"></canvas>
+                                <div
+                                    style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Current Rating: <span
+                                            style="color: var(--success); font-weight: 700;">A+ (Optimal)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing & Payments Sub-View -->
+                    <div id="sub-view-billing" class="sub-tab-content">
+                        <div class="grid grid-3" style="margin-bottom: 2rem; gap: 1.5rem;">
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                                    Total Billed (YTD)</h3>
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">$1,240
+                                </div>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                                    Avg
+                                    Monthly Bill</h3>
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--secondary);">$103
+                                </div>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                                    Next
+                                    Bill Due</h3>
+                                <div
+                                    style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+                                    Feb 15, 2026</div>
+                                <span
+                                    style="background: rgba(34, 197, 94, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem;">Auto-Pay
+                                    On</span>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="flex-between"
+                                style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                <h2 style="font-size: 1.5rem;">Billing History</h2>
+                                <button class="chart-control-btn" onclick="updateMockUserChart('billingHistory')">
+                                    <i class="fas fa-random"></i> Simulate
+                                </button>
+                            </div>
+                            <canvas id="userBillingChart" style="width: 100%; height: 350px;"></canvas>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div class="card scroll-reveal">
+                            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Recent Service Requests</h2>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div
+                                    style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border-inline-start: 4px solid var(--warning);">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                        <h3 style="font-size: 1.125rem;">Water Heater Repair</h3>
+                                        <span
+                                            style="background: rgba(245, 158, 11, 0.1); color: var(--warning); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">IN
+                                            PROGRESS</span>
+                                    </div>
+                                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">No hot water in
+                                        master
+                                        bathroom</p>
+                                    <div
+                                        style="display: flex; gap: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+                                        <span><i class="fas fa-calendar"></i> Jan 10, 2024</span>
+                                        <span><i class="fas fa-map-marker-alt"></i> 123 Main St</span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem; border-inline-start: 4px solid var(--success);">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                        <h3 style="font-size: 1.125rem;">Drain Cleaning</h3>
+                                        <span
+                                            style="background: rgba(34, 197, 94, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">COMPLETED</span>
+                                    </div>
+                                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Kitchen sink clogged
+                                    </p>
+                                    <div
+                                        style="display: flex; gap: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+                                        <span><i class="fas fa-calendar"></i> Jan 8, 2024</span>
+                                        <span><i class="fas fa-map-marker-alt"></i> 123 Main St</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="card scroll-reveal" style="margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Service Trends</h3>
+                                <canvas id="customerChart" style="width: 100%; height: 180px;"></canvas>
+                            </div>
+
+                            <div class="card scroll-reveal" style="margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Quick Actions</h3>
+                                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                    <button class="btn btn-primary" style="width: 100%; justify-content: flex-start;">
+                                        <i class="fas fa-plus"></i> New Request
+                                    </button>
+                                    <button class="btn btn-outline" style="width: 100%; justify-content: flex-start;">
+                                        <i class="fas fa-calendar"></i> Schedule Service
+                                    </button>
+                                    <button class="btn btn-outline" style="width: 100%; justify-content: flex-start;">
+                                        <i class="fas fa-file-invoice"></i> View Invoices
+                                    </button>
+                                    <button class="btn btn-outline" style="width: 100%; justify-content: flex-start;">
+                                        <i class="fas fa-user"></i> Edit Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End General Overview -->
+
+
+
+                <!-- Usage Analytics Sub-View -->
+                <div id="sub-view-usage" class="sub-tab-content">
+                    <div class="grid grid-2" style="gap: 2rem;">
+                        <div class="card">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Peak Usage Times</h3>
+                            <canvas id="usagePeakUsageChart" style="width: 100%; height: 250px;"></canvas>
+                            <div
+                                style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <span style="color: var(--text-secondary);">Highest Activity</span>
+                                    <span style="font-weight: 700; color: var(--primary);">6:00 PM - 9:00 PM</span>
+                                </div>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">
+                                    Your water consumption peaks during evening hours. Consider scheduling heavy usage
+                                    tasks like laundry or dishwasher cycles during
+                                    <span style="color: var(--success); font-weight: 600;">Off-Peak hours (10 PM - 6
+                                        AM)</span> to optimize efficiency.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Efficiency Rating Breakdown</h3>
+                            <canvas id="usageEfficiencyDetailChart" style="width: 100%; height: 250px;"></canvas>
+                            <div style="margin-top: 1.5rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: rgba(34, 197, 94, 0.05); border-radius: 0.5rem; border-inline-start: 3px solid var(--success);">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <i class="fas fa-leaf"
+                                                style="color: var(--success); font-size: 0.875rem;"></i>
+                                            <span style="font-size: 0.875rem; font-weight: 600;">Optimal
+                                                Performance</span>
+                                        </div>
+                                        <span
+                                            style="font-size: 0.875rem; font-weight: 700; color: var(--success);">70%</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: rgba(245, 158, 11, 0.05); border-radius: 0.5rem; border-inline-start: 3px solid var(--warning);">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <i class="fas fa-exclamation-triangle"
+                                                style="color: var(--warning); font-size: 0.875rem;"></i>
+                                            <span style="font-size: 0.875rem; font-weight: 600;">Minor
+                                                Inefficiencies</span>
+                                        </div>
+                                        <span
+                                            style="font-size: 0.875rem; font-weight: 700; color: var(--warning);">20%</span>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: rgba(239, 68, 68, 0.05); border-radius: 0.5rem; border-inline-start: 3px solid var(--danger);">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <i class="fas fa-tint-slash"
+                                                style="color: var(--danger); font-size: 0.875rem;"></i>
+                                            <span style="font-size: 0.875rem; font-weight: 600;">Potential Leaks</span>
+                                        </div>
+                                        <span
+                                            style="font-size: 0.875rem; font-weight: 700; color: var(--danger);">10%</span>
+                                    </div>
+                                </div>
+                                <p
+                                    style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary); text-align: center;">
+                                    Based on sensor data from the last 30 days.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing & Payments Sub-View -->
+                <div id="sub-view-billing" class="sub-tab-content">
+                    <div class="grid grid-3" style="margin-bottom: 2rem; gap: 1.5rem;">
+                        <div class="card" style="text-align: center;">
+                            <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">Total
+                                Billed
+                                (YTD)</h3>
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">$1,240</div>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">Avg
+                                Monthly
+                                Bill</h3>
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--secondary);">$103</div>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">Next
+                                Bill
+                                Due</h3>
+                            <div
+                                style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+                                Feb 15, 2026</div>
+                            <span
+                                style="background: rgba(34, 197, 94, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem;">Auto-Pay
+                                On</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex-between"
+                            style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            <h2 style="font-size: 1.5rem;">Billing History</h2>
+                            <button class="chart-control-btn" onclick="updateMockUserChart('billingHistory')">
+                                <i class="fas fa-random"></i> Simulate
+                            </button>
+                        </div>
+                        <canvas id="userBillingChart" style="width: 100%; height: 350px;"></canvas>
+                    </div>
+                </div>
+                <script>
+                    // Sub-View Switching Logic
+                    function switchSubView(subViewName) {
+                        // Update buttons
+                        document.querySelectorAll('.sub-nav-item').forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('onclick').includes(subViewName)) {
+                                btn.classList.add('active');
+                            }
+                        });
+
+                        // Show content
+                        document.querySelectorAll('.sub-tab-content').forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === `sub-view-${subViewName}`) {
+                                content.classList.add('active');
+                            }
+                        });
+
+                        // Trigger resize for charts
+                        setTimeout(() => {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 50);
+                    }
+
+                    // Initialize Sub-Dashboard Charts
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const createSubChart = (id, options) => {
+                            if (document.getElementById(id)) {
+                                if (typeof Chart !== 'undefined') {
+                                    const chart = new Chart(id, options);
+                                    window.chartInstances = window.chartInstances || [];
+                                    window.chartInstances.push(chart);
+                                    return chart;
+                                }
+                            }
+                        };
+
+                        // USAGE ANALYTICS CHARTS
+                        // Peak Usage (Bar)
+                        createSubChart('overviewPeakUsageChart', {
+                            type: 'bar',
+                            data: [45, 80, 60, 90, 75],
+                            labels: ['Morning', 'Noon', 'Afternoon', 'Evening', 'Night'],
+                            colors: ['#FF6B35', '#fde047', '#f97316', '#6366f1', '#1e293b']
+                        });
+                        createSubChart('usagePeakUsageChart', {
+                            type: 'bar',
+                            data: [45, 80, 60, 90, 75],
+                            labels: ['Morning', 'Noon', 'Afternoon', 'Evening', 'Night'],
+                            colors: ['#FF6B35', '#fde047', '#f97316', '#6366f1', '#1e293b']
+                        });
+
+                        // Efficiency Detail (Pie)
+                        createSubChart('overviewEfficiencyDetailChart', {
+                            type: 'pie',
+                            data: [70, 20, 10],
+                            labels: ['Efficient', 'Excessive', 'Leakage'],
+                            colors: ['#22c55e', '#f59e0b', '#ef4444']
+                        });
+                        createSubChart('usageEfficiencyDetailChart', {
+                            type: 'pie',
+                            data: [70, 20, 10],
+                            labels: ['Efficient', 'Excessive', 'Leakage'],
+                            colors: ['#22c55e', '#f59e0b', '#ef4444']
+                        });
+
+                        // BILLING CHARTS
+                        // Billing History (Area)
+                        createSubChart('userBillingChart', {
+                            type: 'bar', // or bar
+                            data: [95, 88, 110, 105, 98, 120, 103, 99, 108, 112, 100, 102],
+                            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            colors: ['#6366f1']
+                        });
+                    });
+
+                    // Chart Interaction Functions
+                    function updateEfficiency(btn, period) {
+                        // Update buttons
+                        const parent = btn.parentElement;
+                        parent.querySelectorAll('.btn').forEach(b => {
+                            b.style.background = 'transparent';
+                            b.style.color = 'var(--text-secondary)';
+                        });
+                        btn.style.background = 'white';
+                        btn.style.color = 'var(--primary)';
+
+                        // Update Chart
+                        const chart = window.chartInstances.find(c => c.canvas.id === 'efficiencyChart');
+                        if (chart) {
+                            let data = [];
+                            if (period === '1M') data = [75, 15, 10];
+                            if (period === '6M') data = [65, 25, 10];
+                            if (period === '1Y') data = [80, 15, 5];
+                            chart.updateData(data);
+                        }
+                    }
+
+                    function updateWaterUsage(btn, period) {
+                        // Update buttons
+                        const parent = btn.parentElement;
+                        parent.querySelectorAll('.btn').forEach(b => {
+                            b.style.background = 'transparent';
+                            b.style.color = 'var(--text-secondary)';
+                        });
+                        btn.style.background = 'white';
+                        btn.style.color = 'var(--primary)';
+
+                        // Update Chart
+                        const chart = window.chartInstances.find(c => c.canvas.id === 'waterUsageChart');
+                        if (chart) {
+                            let data = [];
+                            let labels = [];
+                            if (period === 'Week') {
+                                data = [320, 310, 290, 280, 250, 240, 220];
+                                labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                            }
+                            if (period === 'Month') {
+                                // Generate random daily data for a month
+                                data = Array.from({ length: 30 }, () => Math.floor(Math.random() * (350 - 200) + 200));
+                                labels = Array.from({ length: 30 }, (_, i) => i + 1);
+                            }
+                            chart.updateData(data, labels);
+                        }
+                    }
+
+                    function updateMockUserChart(type) {
+                        const chartId = type === 'usageDetail' ? 'userUsageDetailChart' : 'userBillingChart';
+                        const chart = window.chartInstances.find(c => c.canvas.id === chartId);
+                        if (chart) {
+                            const count = chart.options.data.length;
+                            const newData = Array.from({ length: count }, () => Math.floor(Math.random() * 100) + 50);
+                            chart.updateData(newData);
+                        }
+                    }
+                </script>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-title">Plumberpro Plumbing</h3>
+                    <p style="color: var(--text-secondary);">Professional plumbing services you can trust. Available
+                        <span dir="ltr">24/7</span> for all your plumbing needs.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Emergency Plumbing</a></li>
+                        <li><a href="services.html">Drain Cleaning</a></li>
+                        <li><a href="services.html">Water Heaters</a></li>
+                        <li><a href="services.html">Pipe Repair</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@plumberpro.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Plumberpro Plumbing. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="tel:5551234567" class="social-link" title="Call Us">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="charts.js"></script>
+    <script src="advanced-animations.js"></script>
+    <script src="hero-animation.js"></script>
+</body>
+
+</html>

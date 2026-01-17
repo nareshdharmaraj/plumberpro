@@ -1,0 +1,98 @@
+/* Dashboard Layout Fixes for Desktop */
+@media (min-width: 993px) {
+    .dashboard-container {
+        display: flex !important;
+        min-height: calc(100vh - var(--navbar-height));
+        padding-top: var(--navbar-height);
+        position: relative;
+    }
+
+    .dashboard-sidebar {
+        width: 280px;
+        background: var(--bg-primary);
+        border-right: 1px solid var(--border-color);
+        height: calc(100vh - var(--navbar-height));
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        overflow-y: auto;
+        z-index: 100;
+        padding-bottom: 2rem;
+    }
+
+    .dashboard-main {
+        flex: 1;
+        margin-left: 280px;
+        /* Width of sidebar */
+        padding: 2rem;
+        background: var(--bg-secondary);
+        min-height: calc(100vh - var(--navbar-height));
+        width: calc(100% - 280px);
+    }
+
+    /* Fix Sidebar Navigation Styling */
+    .sidebar-nav {
+        list-style: none;
+        padding: 1.5rem 1rem;
+    }
+
+    .sidebar-section {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 1.5rem 0 0.5rem 1rem;
+    }
+
+    .sidebar-section:first-child {
+        margin-top: 0;
+    }
+
+    .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--text-secondary);
+        transition: var(--transition);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .sidebar-link:hover {
+        background: var(--bg-secondary);
+        color: var(--primary);
+    }
+
+    .sidebar-link.active {
+        background: linear-gradient(90deg, rgba(255, 107, 53, 0.1), transparent);
+        color: var(--primary);
+        border-left: 3px solid var(--primary);
+    }
+
+    .sidebar-link i {
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+}
+
+/* Ensure content visibility */
+.dashboard-view {
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
