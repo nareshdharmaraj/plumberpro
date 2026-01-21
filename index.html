@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlumberPro Plumbing - Home</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="quote-badge.css">
+    <link rel="stylesheet" href="extra-styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <span class="brand-logo-box">P</span>PlumberPro
+            </a>
+            <ul class="navbar-menu">
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+                        <li><a href="home2.html" class="dropdown-item">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About Us</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html" class="dropdown-item">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+            </ul>
+            <div class="navbar-controls">
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="rtl-toggle" title="Toggle RTL"><i class="fas fa-globe"></i></button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero"
+        style="background: url('assets/images/plumber_hero_cinematic.png') no-repeat center center/cover; height: 100vh; min-height: 800px; position: relative; padding-top: 70px;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);">
+        </div>
+
+        <div class="container"
+            style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
+            <div class="hero-content"
+                style="max-width: 650px; color: #fff; padding-inline-start: 2rem; text-align: start; align-items: flex-start;">
+                <div style="margin-bottom: 1.5rem; display: inline-block;">
+                    <i class="fas fa-wrench"
+                        style="font-size: 2.5rem; transform: scaleX(1); color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.3);"></i>
+                </div>
+                <h1
+                    style="font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; text-align: start; color: #fff; font-family: 'Inter', sans-serif; text-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    Plumbing without limits
+                </h1>
+                <p
+                    style="font-size: 1.25rem; margin-bottom: 3rem; max-width: 500px; opacity: 0.95; text-align: start; color: #fff; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    Create a home that flows perfectly. Certified localized experts around the city ready to serve you.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn"
+                        style="background: #a855f7; color: #fff; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); text-transform: none; cursor: pointer;">
+                        Choose your service
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="status-panel">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin: 0;">Service Operations Monitor</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <span class="status-indicator">SYSTEM_ACTIVE</span>
+                            <span class="terminal-text">SYNC_LATENCY: 8ms</span>
+                            <span class="terminal-text">FLEET_STATUS: 100%</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Response_Time</div>
+                            <div class="metric-value">&lt;30<span class="metric-unit">min</span></div>
+                            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--success);">
+                                <i class="fas fa-arrow-up"></i> Priority
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Fleet_Available</div>
+                            <div class="metric-value"><span dir="ltr">24/7</span></div>
+                            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--success);">
+                                <i class="fas fa-check-circle"></i> Active
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Uptime_Rate</div>
+                            <div class="metric-value">99.8<span class="metric-unit">%</span></div>
+                            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--success);">
+                                <i class="fas fa-shield-alt"></i> Verified
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Technicians</div>
+                            <div class="metric-value">50+</div>
+                            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--success);">
+                                <i class="fas fa-certificate"></i> Licensed
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                            Compliance & Certification</h4>
+                        <div class="compliance-grid">
+                            <span class="tech-badge">EPA_CERT</span>
+                            <span class="tech-badge">OSHA_SAFE</span>
+                            <span class="tech-badge">ISO_9001</span>
+                            <span class="tech-badge">STATE_LIC</span>
+                            <span class="tech-badge">BONDED</span>
+                            <span class="tech-badge">INSURED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose <span class="gradient-text">PlumberPro</span></h2>
+                <p class="section-subtitle">We combine expertise with exceptional customer service</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 182, 39, 0.1));">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title">Licensed & Insured</h3>
+                    <p class="card-text">All our plumbers are fully licensed, bonded, and insured professionals with
+                        years of experience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title"><span dir="ltr">24/7 Availability</span></h3>
+                    <p class="card-text">Emergency plumbing services available round the clock. We're here when you need
+                        us most.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"
+                        style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1));">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">100% Guaranteed</h3>
+                    <p class="card-text">We stand behind our work with a complete satisfaction guarantee on all
+                        services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="gradient-text">Statistics</span></h2>
+                <p class="section-subtitle">Numbers that speak for themselves</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="stats-card" style="background: linear-gradient(135deg, #FF6B35, #FFB627);">
+                    <div class="stats-number">15+</div>
+                    <div class="stats-label">Years Experience</div>
+                </div>
+                <div class="stats-card" style="background: linear-gradient(135deg, #6366f1, #a855f7);">
+                    <div class="stats-number">10K+</div>
+                    <div class="stats-label">Happy Customers</div>
+                </div>
+                <div class="stats-card" style="background: linear-gradient(135deg, #22c55e, #06b6d4);">
+                    <div class="stats-number">98%</div>
+                    <div class="stats-label">Satisfaction Rate</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Operations <span class="gradient-text">Dashboard</span></h2>
+                <p class="section-subtitle">Real-time service deployment and monitoring</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="operations-card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-network-wired" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Fleet Network</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">Real-Time Tracking</p>
+                        </div>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Active_Units</span>
+                        <span class="status-value">24</span>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Coverage_Zone</span>
+                        <span class="status-value">50mi</span>
+                    </div>
+                    <div class="system-status" style="border-left-color: var(--success);">
+                        <span class="status-key">Status</span>
+                        <span class="status-value" style="color: var(--success);">OPERATIONAL</span>
+                    </div>
+                </div>
+
+                <div class="operations-card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-chart-line" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Performance Analytics</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">AI Predictive</p>
+                        </div>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Jobs_Completed</span>
+                        <span class="status-value">2,847</span>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Avg_Duration</span>
+                        <span class="status-value">2.4hrs</span>
+                    </div>
+                    <div class="system-status" style="border-left-color: var(--success);">
+                        <span class="status-key">Accuracy</span>
+                        <span class="status-value" style="color: var(--success);">98.3%</span>
+                    </div>
+                </div>
+
+                <div class="operations-card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--warning), var(--primary)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-alt" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Quality Assurance</h3>
+                            <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;">Certified Standards</p>
+                        </div>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Inspections</span>
+                        <span class="status-value">100%</span>
+                    </div>
+                    <div class="system-status">
+                        <span class="status-key">Pass_Rate</span>
+                        <span class="status-value">99.1%</span>
+                    </div>
+                    <div class="system-status" style="border-left-color: var(--success);">
+                        <span class="status-key">Warranty</span>
+                        <span class="status-value" style="color: var(--success);">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle">Comprehensive plumbing solutions for every need</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <h3 class="card-title">Fixture Installation</h3>
+                    <p class="card-text">Professional installation and repair of faucets, sinks, toilets, and all
+                        fixtures.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="card-title">Pipe Services</h3>
+                    <p class="card-text">Complete pipe repair, replacement, and repiping services for residential and
+                        commercial.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="card-title">Drain Cleaning</h3>
+                    <p class="card-text">Advanced drain cleaning using hydro jetting and video inspection technology.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="card-title">Water Heaters</h3>
+                    <p class="card-text">Installation, repair, and maintenance of tankless and traditional water
+                        heaters.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h3 class="card-title">Emergency Service</h3>
+                    <p class="card-text"><span dir="ltr">24/7</span> emergency plumbing for burst pipes, major leaks,
+                        and urgent issues.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Commercial Plumbing</h3>
+                    <p class="card-text">Comprehensive plumbing services for businesses and commercial properties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+                <p class="section-subtitle">Simple process to get your plumbing fixed</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #FF6B35, #FFB627); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
+                        1</div>
+                    <h3 class="card-title">Contact Us</h3>
+                    <p class="card-text">Call us or fill out the contact form to describe your plumbing issue.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
+                        2</div>
+                    <h3 class="card-title">Schedule Service</h3>
+                    <p class="card-text">We'll schedule a convenient time for our expert plumber to visit your location.
+                    </p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #22c55e, #06b6d4); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
+                        3</div>
+                    <h3 class="card-title">Get Fixed</h3>
+                    <p class="card-text">Our licensed plumber arrives on time and completes the job efficiently.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #f59e0b); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">
+                        4</div>
+                    <h3 class="card-title">Satisfaction Guaranteed</h3>
+                    <p class="card-text">We ensure you're 100% satisfied with our work and offer warranties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our <span class="gradient-text">Customers Say</span></h2>
+                <p class="section-subtitle">Real reviews from satisfied clients</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card testimonial-card fade-in-up stagger-1 hover-lift"
+                    style="position: relative; padding-top: 3rem;">
+                    <div class="quote-badge quote-badge-primary">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text"
+                        style="margin-bottom: 1.5rem; font-style: italic; color: var(--text-secondary); line-height: 1.8;">
+                        PlumberPro saved the day! They responded to my emergency call within 30 minutes and fixed my burst
+                        pipe quickly. Professional and affordable service!</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="image-zoom-container testimonial-avatar"
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-secondary); overflow: hidden; border: 3px solid var(--primary); position: relative;">
+                            <img src="assets/images/Team Member Profile.png" alt="Sarah Johnson"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                loading="lazy">
+                            <div
+                                style="position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; background: #22c55e; border-radius: 50%; border: 2px solid white;">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 700; margin-bottom: 0.25rem; color: var(--text-primary);">Sarah
+                                Johnson</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card testimonial-card fade-in-up stagger-2 hover-lift"
+                    style="position: relative; padding-top: 3rem;">
+                    <div class="quote-badge quote-badge-secondary">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text"
+                        style="margin-bottom: 1.5rem; font-style: italic; color: var(--text-secondary); line-height: 1.8;">
+                        Excellent service from start to finish. The plumber was knowledgeable, clean, and explained
+                        everything clearly. Highly recommend PlumberPro!</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="image-zoom-container testimonial-avatar"
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-secondary); overflow: hidden; border: 3px solid var(--secondary); position: relative;">
+                            <img src="assets/images/Plumber Consulting on Tablet.png" alt="Michael Chen"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                loading="lazy">
+                            <div
+                                style="position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; background: #22c55e; border-radius: 50%; border: 2px solid white;">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 700; margin-bottom: 0.25rem; color: var(--text-primary);">Michael
+                                Chen</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card testimonial-card fade-in-up stagger-3 hover-lift"
+                    style="position: relative; padding-top: 3rem;">
+                    <div class="quote-badge quote-badge-success">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="card-text"
+                        style="margin-bottom: 1.5rem; font-style: italic; color: var(--text-secondary); line-height: 1.8;">
+                        Best plumbing company I've ever worked with! They installed my new water heater and the price
+                        was very reasonable. Will use them again!</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="image-zoom-container testimonial-avatar"
+                            style="width: 50px; height: 50px; border-radius: 50%; background: var(--bg-secondary); overflow: hidden; border: 3px solid var(--success); position: relative;">
+                            <img src="assets/images/Quality Service Showcase.png" alt="Emily Rodriguez"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"
+                                loading="lazy">
+                            <div
+                                style="position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; background: #22c55e; border-radius: 50%; border: 2px solid white;">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 700; margin-bottom: 0.25rem; color: var(--text-primary);">Emily
+                                Rodriguez</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Property Manager
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"
+        style="background: linear-gradient(135deg, #FF6B35, #FFB627); color: white; padding: 6rem 0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; color: white;">Need Emergency
+                    Plumbing Service?</h2>
+                <p style="font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95;">Our expert plumbers are available
+                    <span dir="ltr">24/7</span> to handle any plumbing emergency. Don't wait - call us now!
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn"
+                        style="background: white; color: var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+                        <i class="fas fa-phone-alt"></i> Call (555) 123-4567
+                    </button>
+                    <button class="btn"
+                        style="background: rgba(255,255,255,0.2); border: 2px solid white; color: white; backdrop-filter: blur(10px);">
+                        <i class="fas fa-calendar-check"></i> Schedule Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 5rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose <span class="gradient-text">PlumberPro</span></h2>
+                <p class="section-subtitle">We go above and beyond for every customer</p>
+            </div>
+            <div class="grid grid-2">
+                <div>
+                    <div class="image-zoom-container"
+                        style="border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-xl);">
+                        <img src="assets/images/Maintenance Services Scene.png" alt="About PlumberPro"
+                            style="width: 100%; height: auto; display: block;" loading="lazy" class="fade-in-left">
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 0.75rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 182, 39, 0.1)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-award" style="color: var(--primary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">15+ Years of Excellence</h3>
+                            <p style="color: var(--text-secondary);">Over a decade of providing top-quality plumbing
+                                services to residential and commercial clients.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 0.75rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-users" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Expert Team</h3>
+                            <p style="color: var(--text-secondary);">All our plumbers are licensed, trained, and
+                                equipped with the latest tools and technology.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 0.75rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Guaranteed Satisfaction</h3>
+                            <p style="color: var(--text-secondary);">We stand behind every job with our 100%
+                                satisfaction guarantee and comprehensive warranties.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <div
+                            style="width: 50px; height: 50px; border-radius: 0.75rem; background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(245, 158, 11, 0.1)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-dollar-sign" style="color: var(--warning); font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Transparent Pricing</h3>
+                            <p style="color: var(--text-secondary);">No hidden fees or surprise charges. We provide
+                                upfront estimates before any work begins.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="gradient-text">Equipment</span></h2>
+                <p class="section-subtitle">State-of-the-art tools for every job</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 220px; border-radius: 0.75rem; overflow: hidden; margin-bottom: 1.5rem;">
+                        <img src="assets/images/Repair Services Scene.png" alt="Professional Tools"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">Professional Grade Tools</h3>
+                    <p class="card-text">We use only the best equipment to ensure quality workmanship on every job. Our
+                        tools are regularly maintained and updated.</p>
+                </div>
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 220px; border-radius: 0.75rem; overflow: hidden; margin-bottom: 1.5rem;">
+                        <img src="assets/images/Maintenance Services Scene.png" alt="Pipe Systems"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">Advanced Diagnostics</h3>
+                    <p class="card-text">Video inspection cameras and leak detection equipment help us identify problems
+                        quickly and accurately.</p>
+                </div>
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 220px; border-radius: 0.75rem; overflow: hidden; margin-bottom: 1.5rem;">
+                        <img src="assets/images/Drain%20Cleaning%20Service.png" alt="Drain Cleaning"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">Hydro Jetting</h3>
+                    <p class="card-text">High-pressure water jetting clears even the toughest clogs from your drains and
+                        sewer lines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Specialized <span class="gradient-text">Services</span></h2>
+                <p class="section-subtitle">Expert solutions for complex plumbing needs</p>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 0 0 150px;">
+                            <img src="assets/images/Installation Services Scene.png" alt="Water Heater"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 0.75rem;"
+                                loading="lazy" class="fade-in-left">
+                        </div>
+                        <div style="flex: 1; min-width: 250px;">
+                            <h3 class="card-title">Water Heater Services</h3>
+                            <p class="card-text" style="margin-bottom: 1rem;">Complete water heater installation,
+                                repair, and maintenance for both tankless and traditional systems.</p>
+                            <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--success); margin-right: 0.5rem;"></i> Tankless water heaters
+                                </li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--success); margin-right: 0.5rem;"></i> Traditional tank
+                                    systems</li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--success); margin-right: 0.5rem;"></i> Energy-efficient
+                                    models</li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--success); margin-right: 0.5rem;"></i> Same-day installation
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+                        <div style="flex: 0 0 150px;">
+                            <img src="assets/images/Maintenance Services Scene.png" alt="Emergency Service"
+                                style="width: 150px; height: 200px; object-fit: cover; border-radius: 0.75rem;"
+                                loading="lazy" class="fade-in-right">
+                        </div>
+                        <div style="flex: 1; min-width: 250px;">
+                            <h3 class="card-title">Emergency Response</h3>
+                            <p class="card-text" style="margin-bottom: 1rem;">Fast 24/7 emergency plumbing services when
+                                you need us most. We're always ready to help.</p>
+                            <ul style="list-style: none; padding: 0; color: var(--text-secondary);">
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--danger); margin-right: 0.5rem;"></i> Available <span
+                                        dir="ltr">24/7/365</span></li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--danger); margin-right: 0.5rem;"></i> 30-minute response time
+                                </li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--danger); margin-right: 0.5rem;"></i> Fully stocked trucks
+                                </li>
+                                <li style="padding: 0.5rem 0;"><i class="fas fa-check"
+                                        style="color: var(--danger); margin-right: 0.5rem;"></i> No extra fees</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"
+        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05)); position: relative; overflow: hidden;">
+        <div class="animated-bg">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header">
+                <h2 class="section-title">Quality <span class="gradient-text">Guaranteed</span></h2>
+                <p class="section-subtitle">Our commitment to excellence in every job</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card"
+                    style="text-align: center; background: var(--bg-primary); backdrop-filter: blur(10px);">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <img src="assets/images/Repair Services Scene.png" alt="Quality Service"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">100% Satisfaction</h3>
+                    <p class="card-text">We stand behind our work with a complete satisfaction guarantee. If you're not
+                        happy, we'll make it right.</p>
+                </div>
+                <div class="card"
+                    style="text-align: center; background: var(--bg-primary); backdrop-filter: blur(10px);">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <img src="assets/images/Maintenance Services Scene.png" alt="Certified Team"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">Licensed & Certified</h3>
+                    <p class="card-text">All our plumbers are fully licensed, certified, and undergo continuous training
+                        to stay current.</p>
+                </div>
+                <div class="card"
+                    style="text-align: center; background: var(--bg-primary); backdrop-filter: blur(10px);">
+                    <div
+                        style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <img src="assets/images/Installation Services Scene.png" alt="Quality Parts"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 class="card-title">Premium Parts</h3>
+                    <p class="card-text">We use only top-quality parts and fixtures from trusted manufacturers with
+                        excellent warranties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Common <span class="gradient-text">Plumbing Issues</span></h2>
+                <p class="section-subtitle">Problems we solve every day</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card" style="border-left: 4px solid var(--primary); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Plumber Under Sink View.png" alt="Leaky Faucets"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary);">Leaky Faucets</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Dripping faucets waste water and
+                            money.
+                            We fix them quickly and affordably.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--secondary); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Drain Cleaning Service.png" alt="Clogged Drains"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--secondary);">Clogged Drains
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">From minor clogs to major blockages,
+                            we
+                            clear them all with professional equipment.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--success); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Fixture Installation.png" alt="Running Toilets"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--success);">Running Toilets
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">A running toilet can waste thousands
+                            of
+                            gallons. We diagnose and repair efficiently.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--danger); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Repair Services Scene.png" alt="Burst Pipes"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--danger);">Burst Pipes</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Emergency pipe repair and
+                            replacement
+                            available <span dir="ltr">24/7</span> with rapid response.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--warning); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Pipe System and Repair.png" alt="Low Water Pressure"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--warning);">Low Water Pressure
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">We identify the cause and restore
+                            proper
+                            water pressure throughout your home.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--purple); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Water Heater Service.png" alt="Water Heater"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--purple);">Water Heater Issues
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">No hot water? Strange noises? We
+                            repair
+                            and replace water heaters same day.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--pink); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Sewer Service Diagnostics.png" alt="Sewer Line"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--pink);">Sewer Line Problems
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Video inspection and repair of sewer
+                            lines using trenchless technology.</p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--cyan); padding: 0; overflow: hidden;">
+                    <img src="assets/images/Plumber Inspecting Outdoor Unit.png" alt="Sump Pump"
+                        style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--cyan);">Sump Pump Failure
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Keep your basement dry with reliable
+                            sump pump installation and maintenance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Innovation <span class="gradient-text">Roadmap</span></h2>
+                <p class="section-subtitle">Future developments in plumbing technology and service</p>
+            </div>
+            <div class="grid grid-3" style="max-width: 1200px; margin: 0 auto;">
+                <div class="phase-card" data-phase="PHASE 01">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; margin-top: 0.5rem;">IoT Smart Monitoring</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        Implementation of smart sensors and IoT devices for real-time leak detection and water usage
+                        analytics throughout your property.
+                    </p>
+                    <div class="uptime-badge">
+                        <i class="fas fa-microchip"></i>
+                        Smart Technology
+                    </div>
+                </div>
+
+                <div class="phase-card" data-phase="PHASE 02">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; margin-top: 0.5rem;">Predictive Maintenance</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        AI-powered predictive analytics that anticipate plumbing issues before they occur, reducing
+                        emergency calls by 40%.
+                    </p>
+                    <div class="uptime-badge">
+                        <i class="fas fa-brain"></i>
+                        AI Powered
+                    </div>
+                </div>
+
+                <div class="phase-card" data-phase="PHASE 03">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; margin-top: 0.5rem;">Eco-Water Solutions</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        Integration of greywater recycling systems and rainwater harvesting to reduce municipal water
+                        dependency.
+                    </p>
+                    <div class="uptime-badge">
+                        <i class="fas fa-leaf"></i>
+                        Sustainable
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h3
+                    style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 600;">
+                    Trusted Technology Partners</h3>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                    <div class="tech-badge hover-scale" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+                        <i class="fas fa-water"></i> AquaTech
+                    </div>
+                    <div class="tech-badge hover-scale" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+                        <i class="fas fa-fire"></i> ThermoPro
+                    </div>
+                    <div class="tech-badge hover-scale" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+                        <i class="fas fa-tint"></i> FlowMaster
+                    </div>
+                    <div class="tech-badge hover-scale" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+                        <i class="fas fa-tools"></i> ToolTech
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Our <span class="gradient-text">Service Areas</span></h2>
+                <p class="section-subtitle">Proudly serving communities across the region</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card fade-in-up stagger-1" style="text-align: center; padding: 0; overflow: hidden;">
+                    <img src="assets/images/Modern Service Van.png" alt="Downtown"
+                        style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; margin: -45px auto 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; border: 4px solid var(--bg-primary);">
+                            <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Downtown District</h3>
+                        <p class="card-text">Full coverage in the city center and business district with rapid 15-minute
+                            response times.</p>
+                        <div style="margin-top: 1rem; color: var(--primary); font-weight: 600;">
+                            <i class="fas fa-check-circle"></i> <span dir="ltr">24/7</span> Available
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-up stagger-2" style="text-align: center; padding: 0; overflow: hidden;">
+                    <img src="assets/images/Residential Project Scenario.png" alt="Suburban"
+                        style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; margin: -45px auto 1rem; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; border: 4px solid var(--bg-primary);">
+                            <i class="fas fa-home" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Suburban Areas</h3>
+                        <p class="card-text">Comprehensive residential plumbing services across all suburban
+                            neighborhoods
+                            and communities.</p>
+                        <div style="margin-top: 1rem; color: var(--secondary); font-weight: 600;">
+                            <i class="fas fa-check-circle"></i> Same-Day Service
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-up stagger-3" style="text-align: center; padding: 0; overflow: hidden;">
+                    <img src="assets/images/Installation Services Scene.png" alt="Commercial"
+                        style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; margin: -45px auto 1rem; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; border: 4px solid var(--bg-primary);">
+                            <i class="fas fa-building" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Commercial Zones</h3>
+                        <p class="card-text">Expert commercial plumbing for offices, retail spaces, and industrial
+                            facilities of all sizes.</p>
+                        <div style="margin-top: 1rem; color: var(--success); font-weight: 600;">
+                            <i class="fas fa-check-circle"></i> Commercial Specialists
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-up stagger-4" style="text-align: center; padding: 0; overflow: hidden;">
+                    <img src="assets/images/Plumber Inspecting Outdoor Unit.png" alt="Rural"
+                        style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; margin: -45px auto 1rem; background: linear-gradient(135deg, var(--pink), var(--warning)); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; border: 4px solid var(--bg-primary);">
+                            <i class="fas fa-truck" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Rural Communities</h3>
+                        <p class="card-text">Extended service coverage to rural areas and countryside locations within
+                            our
+                            service radius.</p>
+                        <div style="margin-top: 1rem; color: var(--warning); font-weight: 600;">
+                            <i class="fas fa-check-circle"></i> Extended Coverage
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Safety & <span class="gradient-text">Compliance</span></h2>
+                <p class="section-subtitle">Your safety and peace of mind are our top priorities</p>
+            </div>
+            <div class="grid grid-2" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card fade-in-left stagger-1">
+                    <div style="display: flex; align-items: start; gap: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-shield-alt" style="font-size: 1.75rem; color: var(--danger);"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Fully Insured & Bonded</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                                All our work is fully insured and bonded. We carry comprehensive liability insurance to
+                                protect you and your property.
+                            </p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>General liability insurance</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>Worker's compensation coverage</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>Bonded for your protection</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-right stagger-2">
+                    <div style="display: flex; align-items: start; gap: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-certificate" style="font-size: 1.75rem; color: var(--success);"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Licensed & Certified</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                                Every technician on our team is fully licensed and certified. We maintain all required
+                                state and local licenses.
+                            </p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>State licensed plumbers</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>EPA certified technicians</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>Ongoing training & education</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-title">PlumberPro Plumbing</h3>
+                    <p style="color: var(--text-secondary);">Professional plumbing services you can trust. Available
+                        <span dir="ltr">24/7</span> for all your plumbing needs.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Emergency Plumbing</a></li>
+                        <li><a href="services.html">Drain Cleaning</a></li>
+                        <li><a href="services.html">Water Heaters</a></li>
+                        <li><a href="services.html">Pipe Repair</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@plumberpro.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PlumberPro Plumbing. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="tel:5551234567" class="social-link" title="Call Us">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="advanced-animations.js"></script>
+    <script src="hero-animation.js"></script>
+</body>
+
+</html>

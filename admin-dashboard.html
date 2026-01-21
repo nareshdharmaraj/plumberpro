@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PlumberPro Plumbing</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extra-styles.css">
+    <link rel="stylesheet" href="dashboard-mobile.css">
+    <style>
+        /* Dashboard Layout Fixes for Desktop - Simplified (No Sidebar) */
+        @media (min-width: 993px) {
+            .dashboard-container {
+                display: block !important;
+                min-height: calc(100vh - var(--navbar-height));
+                padding-top: var(--navbar-height);
+                position: relative;
+                width: 100%;
+                background: var(--bg-secondary) !important;
+            }
+
+            .dashboard-main {
+                width: 100% !important;
+                margin: 0 auto !important;
+                padding: 2rem;
+                background: var(--bg-secondary);
+                min-height: calc(100vh - var(--navbar-height));
+                position: relative;
+                z-index: 1;
+                max-width: 1400px;
+                /* Optional: Constrain width for better readability on huge screens */
+            }
+        }
+
+        /* Ensure content visibility - Critical Fixes */
+        .dashboard-view {
+            width: 100%;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-view.active {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sub-Navbar Styles */
+        .sub-navbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sub-nav-item {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-bottom: 3px solid transparent;
+            border-radius: 0.5rem 0.5rem 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        .sub-nav-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .sub-nav-item.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.3);
+            border-bottom-color: white;
+            font-weight: 700;
+        }
+
+        .sub-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .sub-tab-content.active {
+            display: block;
+        }
+
+        /* Chart Control Interactivity */
+        .chart-control-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .chart-control-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* RTL/LTR Responsive Helper */
+        [dir="rtl"] .sub-navbar {
+            flex-direction: row;
+        }
+
+        /* Fix text visibility on light backgrounds */
+        .card table thead th {
+            color: var(--text-primary) !important;
+            background: var(--bg-tertiary) !important;
+        }
+
+        .card table tbody td {
+            color: var(--text-primary);
+        }
+
+        .card table tbody td:nth-child(2),
+        .card table tbody td:nth-child(3) {
+            color: var(--text-secondary);
+        }
+
+        /* Fix schedule time labels visibility */
+        .card div[style*="border-left"]>div:first-child {
+            color: var(--text-primary) !important;
+        }
+
+        /* Ensure all card headings are visible */
+        .card h2,
+        .card h3 {
+            color: var(--text-primary);
+        }
+
+        /* Fix "Today's Schedule" task items - ensure time is visible */
+        .dashboard-main .card div[style*="font-weight: 600"] {
+            color: var(--text-primary) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><span class="brand-logo-box">P</span>PlumberPro</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+                        <li><a href="home2.html" class="dropdown-item">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About Us</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html" class="dropdown-item">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+            </ul>
+            <div class="navbar-controls">
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="rtl-toggle" title="Toggle RTL"></button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+
+        <main class="dashboard-main">
+            <div id="view-overview" class="dashboard-view active" style="display: block;">
+                <div class="dashboard-header" style="margin-bottom: 2rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div>
+                                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: white;">Admin
+                                    Dashboard</h1>
+                                <p style="opacity: 0.9; font-size: 1.125rem; color: rgba(255,255,255,0.9);">Business
+                                    overview
+                                    and management</p>
+                            </div>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i> Export Report
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-navbar">
+                        <button class="sub-nav-item active" onclick="switchSubView('general')">General Overview</button>
+                        <button class="sub-nav-item" onclick="switchSubView('financial')">Financial Analytics</button>
+                        <button class="sub-nav-item" onclick="switchSubView('operations')">Operational Metrics</button>
+                    </div>
+
+                    <!-- General Overview Tab -->
+                    <div id="sub-view-general" class="sub-tab-content active">
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <span class="dashboard-card-title">Total Revenue</span>
+                                    <i class="fas fa-dollar-sign" style="color: var(--success); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="dashboard-card-value">$24,580</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                    <i class="fas fa-arrow-up" style="color: var(--success);"></i> 12.5% from last month
+                                </p>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <span class="dashboard-card-title">Active Jobs</span>
+                                    <i class="fas fa-wrench" style="color: var(--warning); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="dashboard-card-value">27</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                    8 scheduled for today
+                                </p>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <span class="dashboard-card-title">New Customers</span>
+                                    <i class="fas fa-users" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="dashboard-card-value">142</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                    <i class="fas fa-arrow-up" style="color: var(--success);"></i> 18 this month
+                                </p>
+                            </div>
+
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <span class="dashboard-card-title">Team Members</span>
+                                    <i class="fas fa-user-tie" style="color: var(--primary); font-size: 1.5rem;"></i>
+                                </div>
+                                <div class="dashboard-card-value">15</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                                    12 technicians, 3 office
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; margin-top: 2rem;">
+                            <div class="card scroll-reveal">
+                                <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Recent Appointments</h2>
+                                <div style="overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <thead>
+                                            <tr style="background: var(--bg-tertiary); text-align: left;">
+                                                <th
+                                                    style="padding: 1rem; font-weight: 600; color: var(--text-primary);">
+                                                    Customer</th>
+                                                <th
+                                                    style="padding: 1rem; font-weight: 600; color: var(--text-primary);">
+                                                    Service</th>
+                                                <th
+                                                    style="padding: 1rem; font-weight: 600; color: var(--text-primary);">
+                                                    Technician</th>
+                                                <th
+                                                    style="padding: 1rem; font-weight: 600; color: var(--text-primary);">
+                                                    Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                                <td style="padding: 1rem; color: var(--text-primary);">John Smith</td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Water Heater
+                                                </td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Mike J.</td>
+                                                <td style="padding: 1rem;">
+                                                    <span
+                                                        style="background: rgba(245, 158, 11, 0.1); color: var(--warning); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">IN
+                                                        PROGRESS</span>
+                                                </td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                                <td style="padding: 1rem; color: var(--text-primary);">Sarah Chen</td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Drain Cleaning
+                                                </td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Tom W.</td>
+                                                <td style="padding: 1rem;">
+                                                    <span
+                                                        style="background: rgba(34, 197, 94, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">COMPLETED</span>
+                                                </td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                                <td style="padding: 1rem; color: var(--text-primary);">David Lee</td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Pipe Repair
+                                                </td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Alex R.</td>
+                                                <td style="padding: 1rem;">
+                                                    <span
+                                                        style="background: rgba(99, 102, 241, 0.1); color: var(--secondary); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">SCHEDULED</span>
+                                                </td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                                <td style="padding: 1rem; color: var(--text-primary);">Emma Wilson</td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Faucet Install
+                                                </td>
+                                                <td style="padding: 1rem; color: var(--text-secondary);">Mike J.</td>
+                                                <td style="padding: 1rem;">
+                                                    <span
+                                                        style="background: rgba(34, 197, 94, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">COMPLETED</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="card scroll-reveal" style="margin-bottom: 1.5rem;">
+                                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Weekly Jobs</h3>
+                                    <canvas id="jobsChart" style="width: 100%; height: 200px;"></canvas>
+                                </div>
+
+                                <div class="card scroll-reveal" style="margin-bottom: 1.5rem;">
+                                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Today's Schedule</h3>
+                                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                        <div
+                                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; border-left: 3px solid var(--primary);">
+                                            <div
+                                                style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary);">
+                                                9:00 AM</div>
+                                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Emergency
+                                                Call -
+                                                Burst
+                                                Pipe</div>
+                                        </div>
+                                        <div
+                                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; border-left: 3px solid var(--secondary);">
+                                            <div
+                                                style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary);">
+                                                11:30 AM</div>
+                                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Water Heater
+                                                Installation</div>
+                                        </div>
+                                        <div
+                                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; border-left: 3px solid var(--success);">
+                                            <div
+                                                style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary);">
+                                                2:00 PM</div>
+                                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Routine
+                                                Maintenance
+                                            </div>
+                                        </div>
+                                        <div
+                                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; border-left: 3px solid var(--warning);">
+                                            <div
+                                                style="font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary);">
+                                                4:30 PM</div>
+                                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Drain
+                                                Inspection
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card"
+                                    style="background: linear-gradient(135deg, var(--secondary), var(--purple)); color: white; text-align: center;">
+                                    <i class="fas fa-chart-line" style="font-size: 2.5rem; margin-bottom: 0.75rem;"></i>
+                                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: white;">Performance
+                                    </h3>
+                                    <div style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">95.8%</div>
+                                    <p style="font-size: 0.875rem; opacity: 0.9;">
+                                        Customer satisfaction this month
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-4" style="margin-top: 2rem;">
+                            <div class="card" style="text-align: center;">
+                                <i class="fas fa-clipboard-check"
+                                    style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Tasks</h3>
+                                <div style="font-size: 2rem; font-weight: 700; color: var(--primary);">8</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Pending approval</p>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <i class="fas fa-file-invoice-dollar"
+                                    style="font-size: 2.5rem; color: var(--success); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Invoices</h3>
+                                <div style="font-size: 2rem; font-weight: 700; color: var(--success);">$8,450</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Pending payment</p>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <i class="fas fa-tools"
+                                    style="font-size: 2.5rem; color: var(--warning); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Inventory</h3>
+                                <div style="font-size: 2rem; font-weight: 700; color: var(--warning);">12</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Low stock items</p>
+                            </div>
+
+                            <div class="card" style="text-align: center;">
+                                <i class="fas fa-star"
+                                    style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Reviews</h3>
+                                <div style="font-size: 2rem; font-weight: 700; color: var(--secondary);">4.9</div>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Average rating</p>
+                            </div>
+                        </div>
+                    </div> <!-- End General Overview -->
+
+                    <!-- Financial Analytics Tab -->
+                    <div id="sub-view-financial" class="sub-tab-content">
+                        <div class="grid grid-2" style="gap: 2rem; margin-bottom: 2rem;">
+                            <div class="card">
+                                <div class="flex-between"
+                                    style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <h2 style="font-size: 1.5rem;">Revenue Breakdown</h2>
+                                    <button class="chart-control-btn" onclick="updateMockChart('finRevenue')">
+                                        <i class="fas fa-sync-alt"></i> Update
+                                    </button>
+                                </div>
+                                <canvas id="finRevenueChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+                            <div class="card">
+                                <div class="flex-between"
+                                    style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <h2 style="font-size: 1.5rem;">Expense Analysis</h2>
+                                    <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                                        Total: <span
+                                            style="color: var(--text-primary); font-weight: bold;">$12,450</span>
+                                    </div>
+                                </div>
+                                <canvas id="finExpenseChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="flex-between"
+                                style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                <h2 style="font-size: 1.5rem;">Profit Trends (YTD)</h2>
+                                <select class="chart-control-btn" onchange="updateMockChart('finProfit')">
+                                    <option>This Year</option>
+                                    <option>Last Year</option>
+                                </select>
+                            </div>
+                            <canvas id="finProfitChart" style="width: 100%; height: 350px;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Operational Metrics Tab -->
+                    <div id="sub-view-operations" class="sub-tab-content">
+                        <div class="grid grid-3" style="margin-bottom: 2rem; gap: 1.5rem;">
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">Avg
+                                    Response Time</h3>
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">28m</div>
+                                <div style="color: var(--success); font-size: 0.9rem;"><i class="fas fa-arrow-down"></i>
+                                    2m faster</div>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                                    First Fix Rate</h3>
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--success);">94%</div>
+                                <div style="color: var(--success); font-size: 0.9rem;"><i class="fas fa-arrow-up"></i>
+                                    1.5% increase</div>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                                    Callback Rate</h3>
+                                <div style="font-size: 2.5rem; font-weight: 800; color: var(--danger);">2.1%</div>
+                                <div style="color: var(--success); font-size: 0.9rem;"><i class="fas fa-arrow-down"></i>
+                                    0.5% decrease</div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; margin-bottom: 2rem;">
+                            <div class="card scroll-reveal">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                    <h2 style="font-size: 1.5rem;">Technician Performance</h2>
+                                    <select
+                                        style="background: var(--bg-secondary); border: none; padding: 0.5rem; border-radius: 0.5rem; color: var(--text-primary); cursor: pointer;"
+                                        onchange="updateTechPerformance(this)">
+                                        <option value="all">All Departments</option>
+                                        <option value="plumbing">Plumbing</option>
+                                        <option value="hvac">HVAC</option>
+                                        <option value="electrical">Electrical</option>
+                                    </select>
+                                </div>
+                                <canvas id="techPerformanceChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+
+                            <div class="card scroll-reveal">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                    <h2 style="font-size: 1.5rem;">Customer Satisfaction</h2>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button class="btn btn-sm"
+                                            style="padding: 0.25rem 0.75rem; font-size: 0.75rem; background: var(--bg-secondary); color: var(--text-primary); border-radius: 1rem;">Export
+                                            CSV</button>
+                                    </div>
+                                </div>
+                                <canvas id="satisfactionChart" style="width: 100%; height: 300px;"></canvas>
+                                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span
+                                            style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e;"></span>
+                                        <span style="font-size: 0.875rem;">Positive (85%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span
+                                            style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                                        <span style="font-size: 0.875rem;">Neutral (12%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span
+                                            style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                                        <span style="font-size: 0.875rem;">Negative (3%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-2" style="gap: 2rem;">
+                            <div class="card">
+                                <div class="flex-between"
+                                    style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <h2 style="font-size: 1.5rem;">Job Completion Status</h2>
+                                    <button class="chart-control-btn" onclick="updateMockChart('opJobs')">
+                                        <i class="fas fa-random"></i> Shuffle
+                                    </button>
+                                </div>
+                                <canvas id="opJobsChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+                            <div class="card">
+                                <div class="flex-between"
+                                    style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <h2 style="font-size: 1.5rem;">Customer Retention</h2>
+                                    <div
+                                        style="background: var(--bg-secondary); padding: 0.25rem; border-radius: 0.5rem; display: flex; gap: 0.25rem;">
+                                        <button class="btn btn-sm active-chart-filter"
+                                            onclick="updateRetention(this, '6M')"
+                                            style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: white; color: var(--primary);">6M</button>
+                                        <button class="btn btn-sm" onclick="updateRetention(this, '1Y')"
+                                            style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: transparent; color: var(--text-secondary);">1Y</button>
+                                        <button class="btn btn-sm" onclick="updateRetention(this, 'ALL')"
+                                            style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: transparent; color: var(--text-secondary);">ALL</button>
+                                    </div>
+                                </div>
+                                <canvas id="opRetentionChart" style="width: 100%; height: 300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <script>
+                    function toggleSidebar() {
+                        const sidebar = document.querySelector('.dashboard-sidebar');
+                        const overlay = document.querySelector('.dashboard-overlay');
+                        sidebar.classList.toggle('active');
+                        overlay.classList.toggle('active');
+                        document.body.classList.toggle('no-scroll'); // Prevent background scroll
+                        const closeBtn = document.querySelector('.mobile-close');
+                        if (closeBtn) closeBtn.style.display = sidebar.classList.contains('active') ? 'flex' : 'none';
+                    }
+
+                    function switchView(viewId) {
+                        document.querySelectorAll('.dashboard-view').forEach(view => {
+                            view.style.display = 'none';
+                            view.classList.remove('active');
+                        });
+
+                        const targetView = document.getElementById(viewId);
+                        if (targetView) {
+                            targetView.style.display = 'block';
+                            targetView.style.opacity = '1';
+
+                            // Force visibility of children
+                            const hiddenChildren = targetView.querySelectorAll('.card, .grid, .dashboard-grid');
+                            hiddenChildren.forEach(child => {
+                                child.style.opacity = '1';
+                                child.style.transform = 'none';
+                                child.style.visibility = 'visible';
+                            });
+
+                            setTimeout(() => {
+                                targetView.classList.add('active');
+                                window.dispatchEvent(new Event('resize'));
+                            }, 10);
+                        }
+
+                        document.querySelectorAll('.sidebar-nav .sidebar-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('data-target') === viewId) {
+                                link.classList.add('active');
+                            }
+                        });
+
+
+                        // Close sidebar on mobile
+                        if (document.querySelector('.dashboard-sidebar').classList.contains('active')) {
+                            toggleSidebar();
+                        }
+
+                        window.dispatchEvent(new Event('resize'));
+                    }
+
+                    // Sub-View Switching Logic
+                    function switchSubView(subViewName) {
+                        // Update buttons
+                        document.querySelectorAll('.sub-nav-item').forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('onclick').includes(subViewName)) {
+                                btn.classList.add('active');
+                            }
+                        });
+
+                        // Show content
+                        document.querySelectorAll('.sub-tab-content').forEach(content => {
+                            content.classList.remove('active');
+                            if (content.id === `sub-view-${subViewName}`) {
+                                content.classList.add('active');
+                            }
+                        });
+
+                        // Trigger resize for charts to render correctly in new tab
+                        setTimeout(() => {
+                            window.dispatchEvent(new Event('resize'));
+                            // Initialize charts for this tab if they haven't been initialized yet
+                            initializeChartsForTab(subViewName);
+                        }, 50);
+
+                        setTimeout(() => {
+                            if (window.chartInstances) {
+                                window.chartInstances.forEach(chart => {
+                                    if (chart && chart.canvas) {
+                                        chart.resize();
+                                        chart.progress = 0;
+                                        chart.isAnimating = true;
+                                        chart.animate();
+                                    }
+                                });
+                            }
+                        }, 100);
+                    }
+
+                    // Lazy chart initialization for each tab
+                    const chartsInitialized = {
+                        general: false,
+                        financial: false,
+                        operations: false
+                    };
+
+                    function initializeChartsForTab(tabName) {
+                        if (typeof Chart === 'undefined') return;
+                        window.chartInstances = window.chartInstances || [];
+
+                        const createSubChart = (id, options) => {
+                            const canvas = document.getElementById(id);
+                            if (!canvas) return null;
+                            // Check if chart already exists for this canvas
+                            if (canvas.chart) {
+                                canvas.chart.resize();
+                                canvas.chart.progress = 0;
+                                canvas.chart.isAnimating = true;
+                                canvas.chart.animate();
+                                return canvas.chart;
+                            }
+                            const chart = new Chart(id, options);
+                            window.chartInstances.push(chart);
+                            return chart;
+                        };
+
+                        if (tabName === 'financial' && !chartsInitialized.financial) {
+                            chartsInitialized.financial = true;
+
+                            // Financial - Revenue Chart (Bar)
+                            createSubChart('finRevenueChart', {
+                                type: 'bar',
+                                data: [3500, 4200, 3800, 5100, 4800, 5900],
+                                labels: ['Res', 'Comm', 'Emrg', 'Maint', 'Install', 'Parts'],
+                                colors: ['#FF6B35', '#22c55e', '#ef4444', '#f59e0b', '#6366f1', '#06b6d4']
+                            });
+
+                            // Financial - Expenses Chart (Pie)
+                            createSubChart('finExpenseChart', {
+                                type: 'pie',
+                                data: [45, 25, 15, 10, 5],
+                                labels: ['Labor', 'Materials', 'Fuel', 'Mktg', 'Admin'],
+                                colors: ['#6366f1', '#ec4899', '#f59e0b', '#22c55e', '#06b6d4']
+                            });
+
+                            // Financial - Profit Trend (Line)
+                            createSubChart('finProfitChart', {
+                                type: 'line',
+                                data: [1200, 1500, 1100, 2400, 2100, 2800, 2600, 3100],
+                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                                colors: ['#22c55e']
+                            });
+                        }
+
+                        if (tabName === 'operations' && !chartsInitialized.operations) {
+                            chartsInitialized.operations = true;
+
+                            // Operations - Jobs (Gantt/Stacked Bar)
+                            createSubChart('opJobsChart', {
+                                type: 'gantt',
+                                data: [15, 20, 10, 25, 12, 18],
+                                dataSecondary: [5, 10, 8, 2, 8, 5],
+                                labels: ['Proj A', 'Proj B', 'Proj C', 'Proj D', 'Proj E', 'Proj F'],
+                                colors: ['#0ea5e9', '#f43f5e']
+                            });
+
+                            // Operations - Retention (Area)
+                            createSubChart('opRetentionChart', {
+                                type: 'area',
+                                data: [85, 88, 87, 89, 91, 92],
+                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                                colors: ['#8b5cf6']
+                            });
+                        }
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        document.querySelectorAll('.sidebar-link[data-target]').forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const target = link.getAttribute('data-target');
+                                switchView(target);
+                            });
+                        });
+                    });
+
+                    // Use window.onload to ensure charts.js is fully loaded
+                    window.addEventListener('load', () => {
+                        // Charts are now initialized lazily when tabs are clicked
+                        // But we still need to wait a moment for charts.js to set up
+                        setTimeout(() => {
+                            // The charts for hidden tabs will be created when those tabs are activated
+                            console.log('Charts ready for lazy initialization');
+                        }, 100);
+                    });
+
+                    // Admin Chart Interaction & Mock Updates
+                    function updateTechPerformance(select) {
+                        const val = select.value;
+                        const chart = window.chartInstances.find(c => c.canvas.id === 'techPerformanceChart');
+                        if (chart) {
+                            let data = [];
+                            if (val === 'all') data = [98, 95, 92, 88, 85, 82];
+                            if (val === 'plumbing') data = [95, 90, 85, 80, 75, 70];
+                            if (val === 'hvac') data = [88, 85, 82, 78, 75, 72];
+                            if (val === 'electrical') data = [92, 89, 86, 83, 80, 77];
+                            // Shuffle for effect if needed, but static mockup per category is fine
+                            chart.updateData(data);
+                        }
+                    }
+
+                    // Generic Mock Update Function
+                    function updateMockChart(chartType) {
+                        let chartId = '';
+                        if (chartType === 'finRevenue') chartId = 'finRevenueChart';
+                        if (chartType === 'finProfit') chartId = 'finProfitChart';
+                        if (chartType === 'opJobs') chartId = 'opJobsChart';
+
+                        const chart = window.chartInstances.find(c => c.canvas.id === chartId);
+                        if (chart) {
+                            // Generate random data mostly for visual effect
+                            const count = chart.options.data.length;
+                            const newData = Array.from({ length: count }, () => Math.floor(Math.random() * 50) + 20);
+
+                            // Special handling for Gantt secondary data
+                            if (chart.options.type === 'gantt') {
+                                chart.options.dataSecondary = Array.from({ length: count }, () => Math.floor(Math.random() * 10) + 2);
+                            }
+
+                            chart.updateData(newData);
+                        }
+                    }
+
+                    function updateRetention(btn, period) {
+                        // Update buttons styling
+                        const parent = btn.parentElement;
+                        parent.querySelectorAll('.btn').forEach(b => {
+                            b.style.background = 'transparent';
+                            b.style.color = 'var(--text-secondary)';
+                        });
+                        btn.style.background = 'white';
+                        btn.style.color = 'var(--primary)';
+
+                        // Update Chart Data
+                        const chart = window.chartInstances.find(c => c.canvas.id === 'opRetentionChart');
+                        if (chart) {
+                            let data = [];
+                            let labels = [];
+                            if (period === '6M') {
+                                data = [85, 88, 87, 89, 91, 92];
+                                labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+                            }
+                            if (period === '1Y') {
+                                data = [82, 84, 85, 88, 87, 89, 91, 92, 93, 94, 95, 96];
+                                labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                            }
+                            if (period === 'ALL') {
+                                data = [70, 75, 78, 80, 85, 88, 87, 89, 91, 92, 95, 98, 97, 99];
+                                labels = ['Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2'];
+                            }
+                            chart.updateData(data, labels);
+                        }
+                    }
+                </script>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-title">PlumberPro Plumbing</h3>
+                    <p style="color: var(--text-secondary);">Professional plumbing services you can trust. Available
+                        <span dir="ltr">24/7</span> for all your plumbing needs.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Emergency Plumbing</a></li>
+                        <li><a href="services.html">Drain Cleaning</a></li>
+                        <li><a href="services.html">Water Heaters</a></li>
+                        <li><a href="services.html">Pipe Repair</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@plumberpro.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PlumberPro Plumbing. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="tel:5551234567" class="social-link" title="Call Us">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="charts.js"></script>
+    <script src="advanced-animations.js"></script>
+    <script src="hero-animation.js"></script>
+</body>
+
+</html>

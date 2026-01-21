@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PlumberPro Plumbing</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><span class="brand-logo-box">P</span>PlumberPro</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+                        <li><a href="home2.html" class="dropdown-item">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About Us</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html" class="dropdown-item">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+            </ul>
+            <div class="navbar-controls">
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="rtl-toggle" title="Toggle RTL"></button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero"
+        style="background: url('assets/images/Plumber Consulting on Tablet.png') no-repeat center center/cover; height: 100vh; min-height: 800px; position: relative; padding-top: 150px;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);">
+        </div>
+
+        <div class="container"
+            style="position: relative; z-index: 2; height: 100%; display: flex; align-items: flex-start; padding-top: 150px;">
+            <div class="hero-content" style="max-width: 650px; color: #fff; text-align: start;">
+                <div style="margin-bottom: 1.5rem; display: inline-block;">
+                    <i class="fas fa-headset"
+                        style="font-size: 2.5rem; transform: scaleX(1); color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.3);"></i>
+                </div>
+                <h1
+                    style="font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; text-align: start; color: #fff; font-family: 'Inter', sans-serif; text-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    Contact Us
+                </h1>
+                <p
+                    style="font-size: 1.25rem; margin-bottom: 3rem; max-width: 500px; opacity: 0.95; text-align: start; color: #fff; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    We are here to help with all your plumbing needs. Get in touch with our expert team today for
+                    reliable, 24/7 service.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#contactForm" class="btn"
+                        style="background: #a855f7; color: #fff; padding: 1.2rem 3rem; border-radius: 50px; border: none; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); text-transform: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                        Send a Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <div>
+                    <div class="card">
+                        <h2 style="font-size: 2rem; margin-bottom: 2rem;">Send Us a Message</h2>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="(555) 123-4567" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Service Type</label>
+                                <select class="form-control" required>
+                                    <option value="">Select a service...</option>
+                                    <option>Emergency Plumbing</option>
+                                    <option>Fixture Installation</option>
+                                    <option>Drain Cleaning</option>
+                                    <option>Water Heater</option>
+                                    <option>Pipe Repair</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" placeholder="Describe your plumbing issue..." rows="5"
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem;">Contact Information</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-phone" style="color: white; font-size: 1.25rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Phone</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">(555) 123-4567</p>
+                                    <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">24/7 Emergency
+                                        Service</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-envelope" style="color: white; font-size: 1.25rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Email</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">info@plumberpro.com</p>
+                                    <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">We reply within
+                                        24 hours</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-map-marker-alt" style="color: white; font-size: 1.25rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Address</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">123 Main Street</p>
+                                    <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">Your City, ST
+                                        12345</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; align-items: start; gap: 1rem;">
+                                <div
+                                    style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--pink), var(--warning)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                    <i class="fas fa-clock" style="color: white; font-size: 1.25rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Hours</h4>
+                                    <p style="color: var(--text-secondary); margin: 0;">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                    <p style="color: var(--text-muted); font-size: 0.875rem; margin: 0;">Emergency: 24/7
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card"
+                        style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.75rem; color: white;">Emergency?</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.95;">
+                            For urgent plumbing issues, call us immediately
+                        </p>
+                        <button class="btn" style="background: white; color: var(--primary);">
+                            <i class="fas fa-phone"></i> Call Emergency Line
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Visit Our <span class="gradient-text">Office</span></h2>
+                <p class="section-subtitle">Find us at our main location</p>
+            </div>
+            <div class="card interactive-map-container"
+                style="padding: 0; overflow: hidden; position: relative; border-radius: 1rem;">
+                <div id="mapContainer"
+                    style="width: 100%; height: 500px; position: relative; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-lg);">
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0086,40.7107,-73.9986,40.7167&layer=mapnik&marker=40.7137,-74.0036"
+                        style="border: 0; display: block;"></iframe>
+                </div>
+            </div>
+            <div class="grid grid-3" style="margin-top: 3rem;">
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #FF6B35, #FFB627); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Easy to Find</h3>
+                    <p style="color: var(--text-secondary);">Conveniently located in the heart of the city with ample
+                        parking</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #6366f1, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-parking" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Free Parking</h3>
+                    <p style="color: var(--text-secondary);">Complimentary parking available for all visitors and
+                        customers</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #22c55e, #06b6d4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-wheelchair" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Accessible</h3>
+                    <p style="color: var(--text-secondary);">Fully wheelchair accessible with ramps and elevators</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Service <span class="gradient-text">Areas</span></h2>
+                <p class="section-subtitle">We proudly serve these communities</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 182, 39, 0.1)); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/Installation%20Services%20Scene.png" alt="Downtown"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Downtown</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">City Center & Business District</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/Installation%20Services%20Scene.png" alt="Suburbs"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Suburbs</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Residential Communities</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1)); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/Sewer%20Service%20Diagnostics.png" alt="Industrial"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Industrial</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Commercial & Industrial Zones</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div
+                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(245, 158, 11, 0.1)); display: flex; align-items: center; justify-content: center;">
+                        <img src="assets/images/Modern%20Service%20Van.png" alt="Countryside"
+                            style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" class="fade-in-scale">
+                    </div>
+                    <h3 style="font-weight: 700; margin-bottom: 0.5rem;">Countryside</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Rural Areas & Farms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Office <span class="gradient-text">Hours</span></h2>
+                <p class="section-subtitle">Our availability for your convenience</p>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--primary);">Regular Business Hours
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                            <span style="font-weight: 600;">Monday - Friday</span>
+                            <span style="color: var(--text-secondary);">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                            <span style="font-weight: 600;">Saturday</span>
+                            <span style="color: var(--text-secondary);">9:00 AM - 4:00 PM</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem;">
+                            <span style="font-weight: 600;">Sunday</span>
+                            <span style="color: var(--text-secondary);">Closed (Emergency Only)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white;">
+                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: white;">Emergency Service</h3>
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; backdrop-filter: blur(10px);">
+                            <i class="fas fa-clock" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">24/7</div>
+                            <p style="font-size: 1.1rem; opacity: 0.95; margin: 0;">Available Every Day</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.95; margin-bottom: 1.5rem;">
+                        Plumbing emergencies don't wait for business hours. We're available 24/7 for urgent situations
+                        including burst pipes, major leaks, and more.
+                    </p>
+                    <button class="btn" style="background: white; color: #ef4444; width: 100%; font-weight: 700;">
+                        <i class="fas fa-phone-alt"></i> Call Emergency: (555) 123-4567
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Common <span class="gradient-text">Questions</span></h2>
+                <p class="section-subtitle">Quick answers to frequently asked questions</p>
+            </div>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary);">How quickly can you
+                        respond to an emergency?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Our emergency response team aims to
+                        arrive at your location within 30 minutes for urgent calls. We operate 24/7/365 and are always
+                        ready to help.</p>
+                </div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary);">Do you offer free
+                        estimates?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Yes! We provide free, no-obligation
+                        estimates for all projects. Contact us to schedule an appointment and get a detailed quote.</p>
+                </div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary);">What payment options
+                        do you accept?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">We accept cash, checks, all major credit
+                        cards, and debit cards. We also offer financing options for larger projects through our approved
+                        partners.</p>
+                </div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary);">Are your technicians
+                        licensed and insured?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Absolutely! All our plumbers are fully
+                        licensed, bonded, and insured. We maintain comprehensive insurance coverage and all necessary
+                        certifications.</p>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary);">Can I schedule an
+                        appointment online?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Yes! You can fill out our contact form
+                        above, or call us directly to schedule an appointment. We typically offer same-day or next-day
+                        service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Multiple <span class="gradient-text">Contact Methods</span></h2>
+                <p class="section-subtitle">Choose the contact method that works best for you</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card fade-in-up stagger-1 hover-lift"
+                    style="text-align: center; border: 2px solid var(--border-color);">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
+                        <i class="fas fa-phone-alt" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Phone Call</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">Speak directly
+                        with our friendly staff. Fastest way to get immediate help.</p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+                            (555) 123-4567</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">24/7 Available</div>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-phone"></i> Call Now
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-2 hover-lift"
+                    style="text-align: center; border: 2px solid var(--primary); box-shadow: var(--shadow-xl); overflow: visible;">
+                    <div
+                        style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 2rem; font-weight: 700; font-size: 0.875rem;">
+                        RECOMMENDED</div>
+                    <div
+                        style="width: 80px; height: 80px; margin: 2rem auto 1.5rem; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
+                        <i class="fas fa-envelope" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Email</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">Send us a detailed
+                        message. We respond within 24 hours, often much faster.</p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 1rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.5rem;">
+                            info@plumberpro.com</div>
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">Response: < 24 hours</div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </button>
+                    </div>
+                    <div class="card fade-in-up stagger-3 hover-lift"
+                        style="text-align: center; border: 2px solid var(--border-color); position: relative;">
+                        <div
+                            style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
+                            <i class="fas fa-comments" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Live Chat</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">Chat with us
+                            in real-time. Available during business hours for instant assistance.</p>
+                        <div
+                            style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                            <div
+                                style="font-size: 1rem; font-weight: 600; color: var(--success); margin-bottom: 0.5rem;">
+                                Online Now</div>
+                            <div style="font-size: 0.875rem; color: var(--text-muted);">Mon-Fri: 8 AM - 6 PM</div>
+                        </div>
+                        <button class="btn btn-secondary" style="width: 100%;">
+                            <i class="fas fa-comments"></i> Start Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Response Time <span class="gradient-text">Guarantees</span></h2>
+                <p class="section-subtitle">We commit to responding quickly to every inquiry</p>
+            </div>
+            <div class="grid grid-2" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card fade-in-left stagger-1"
+                    style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(220, 38, 38, 0.05)); border-left: 4px solid var(--danger);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--danger), #dc2626); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-bolt" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: var(--danger);">Emergency Calls
+                            </h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Urgent Plumbing
+                                Issues</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1rem;">
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--danger); margin-bottom: 0.5rem;">≤
+                            30 min</div>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">Our emergency response
+                            team guarantees arrival within 30 minutes for critical situations like burst pipes, major
+                            leaks, and flooding.</p>
+                    </div>
+                </div>
+                <div class="card fade-in-right stagger-2"
+                    style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(255, 182, 39, 0.05)); border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-phone" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: var(--primary);">Regular Calls
+                            </h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Business Hours</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1rem;">
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+                            ≤ 4 hours</div>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">For non-emergency
+                            inquiries during business hours, we respond within 4 hours. Most calls are answered
+                            immediately.</p>
+                    </div>
+                </div>
+                <div class="card fade-in-left stagger-3"
+                    style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05)); border-left: 4px solid var(--secondary);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-envelope-open" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: var(--secondary);">Email
+                                Response</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Written Inquiries</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1rem;">
+                        <div
+                            style="font-size: 2.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem;">
+                            ≤ 24 hours</div>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">All email inquiries
+                            receive comprehensive responses within 24 hours. Many emails are answered within just a few
+                            hours.</p>
+                    </div>
+                </div>
+                <div class="card fade-in-right stagger-4"
+                    style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(6, 182, 212, 0.05)); border-left: 4px solid var(--success);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-comment-dots" style="font-size: 1.75rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.25rem; color: var(--success);">Live Chat</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Online Support</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 0.75rem; margin-top: 1rem;">
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--success); margin-bottom: 0.5rem;">
+                            Instant</div>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin: 0;">Live chat provides
+                            immediate responses during business hours. Our support team is ready to help you right away.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Regional <span class="gradient-text">Offices</span></h2>
+                <p class="section-subtitle">Find the PlumberPro location nearest to you</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card fade-in-up stagger-1 hover-lift">
+                    <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">Main Office
+                            </h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">123
+                                Main Street<br>Your City, ST 12345</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Phone:</span>
+                            <span style="font-weight: 600; color: var(--text-primary);">(555) 123-4567</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Email:</span>
+                            <span
+                                style="font-weight: 600; color: var(--text-primary); font-size: 0.875rem;">main@plumberpro.com</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-2 hover-lift">
+                    <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--secondary), var(--purple)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-building" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--secondary);">North Branch
+                            </h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">456
+                                North Avenue<br>North District, ST 12346</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Phone:</span>
+                            <span style="font-weight: 600; color: var(--text-primary);">(555) 123-4568</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Email:</span>
+                            <span
+                                style="font-weight: 600; color: var(--text-primary); font-size: 0.875rem;">north@plumberpro.com</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-3 hover-lift">
+                    <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--success), var(--cyan)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-store" style="font-size: 1.5rem; color: white;"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--success);">South Branch
+                            </h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">789
+                                South Boulevard<br>South Quarter, ST 12347</p>
+                        </div>
+                    </div>
+                    <div
+                        style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Phone:</span>
+                            <span style="font-weight: 600; color: var(--text-primary);">(555) 123-4569</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.875rem; color: var(--text-muted);">Email:</span>
+                            <span
+                                style="font-weight: 600; color: var(--text-primary); font-size: 0.875rem;">south@plumberpro.com</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Contact <span class="gradient-text">Tips</span></h2>
+                <p class="section-subtitle">Get the most out of your contact with us</p>
+            </div>
+            <div class="grid grid-2" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card fade-in-left stagger-1">
+                    <div style="display: flex; align-items: start; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-lightbulb" style="font-size: 1.75rem; color: var(--success);"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--success);">For Best
+                                Results</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-check" style="color: var(--success); margin-top: 0.25rem;"></i>
+                                    <span>Describe your issue in detail - photos are helpful</span>
+                                </li>
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-check" style="color: var(--success); margin-top: 0.25rem;"></i>
+                                    <span>Mention if it's an emergency or can wait</span>
+                                </li>
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-check" style="color: var(--success); margin-top: 0.25rem;"></i>
+                                    <span>Provide your address and preferred contact method</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-check" style="color: var(--success); margin-top: 0.25rem;"></i>
+                                    <span>Share your availability for scheduling</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-right stagger-2">
+                    <div style="display: flex; align-items: start; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div
+                            style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-info-circle" style="font-size: 1.75rem; color: var(--secondary);"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--secondary);">What to
+                                Expect</h3>
+                            <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-clock" style="color: var(--secondary); margin-top: 0.25rem;"></i>
+                                    <span>Immediate acknowledgment of your inquiry</span>
+                                </li>
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-clock" style="color: var(--secondary); margin-top: 0.25rem;"></i>
+                                    <span>Response within our guaranteed timeframes</span>
+                                </li>
+                                <li
+                                    style="padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-clock" style="color: var(--secondary); margin-top: 0.25rem;"></i>
+                                    <span>Transparent pricing and detailed estimates</span>
+                                </li>
+                                <li style="padding: 0.75rem 0; display: flex; align-items: start; gap: 0.75rem;">
+                                    <i class="fas fa-clock" style="color: var(--secondary); margin-top: 0.25rem;"></i>
+                                    <span>Professional service from start to finish</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Social Media <span class="gradient-text">Presence</span></h2>
+                <p class="section-subtitle">Connect with us on social media for tips, updates, and special offers</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card fade-in-up stagger-1 hover-lift"
+                    style="text-align: center; padding: 2rem; border: 2px solid var(--border-color); background: linear-gradient(135deg, rgba(29, 161, 242, 0.05), rgba(29, 161, 242, 0.1));">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #1da1f2, #0d8bd9); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(29, 161, 242, 0.3);">
+                        <i class="fab fa-twitter" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Twitter</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6;">
+                        Follow us for daily plumbing tips, quick fixes, and company updates. Join our community!</p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #1da1f2; margin-bottom: 0.25rem;">5.2K
+                        </div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Followers</div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fab fa-twitter"></i> Follow Us
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-2 hover-lift"
+                    style="text-align: center; padding: 2rem; border: 2px solid var(--border-color); background: linear-gradient(135deg, rgba(225, 48, 108, 0.05), rgba(225, 48, 108, 0.1));">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #e1306c, #c13584); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(225, 48, 108, 0.3);">
+                        <i class="fab fa-instagram" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Instagram</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6;">
+                        See our work in action! Before/after photos, project highlights, and behind-the-scenes content.
+                    </p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #e1306c; margin-bottom: 0.25rem;">8.7K
+                        </div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Followers</div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fab fa-instagram"></i> Follow Us
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-3 hover-lift"
+                    style="text-align: center; padding: 2rem; border: 2px solid var(--border-color); background: linear-gradient(135deg, rgba(24, 119, 242, 0.05), rgba(24, 119, 242, 0.1));">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #1877f2, #0e6ad8); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);">
+                        <i class="fab fa-facebook" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Facebook</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6;">
+                        Like our page for community stories, customer reviews, and special promotions exclusive to our
+                        Facebook fans.</p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #1877f2; margin-bottom: 0.25rem;">12.5K
+                        </div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Likes</div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fab fa-facebook"></i> Like Page
+                    </button>
+                </div>
+                <div class="card fade-in-up stagger-4 hover-lift"
+                    style="text-align: center; padding: 2rem; border: 2px solid var(--border-color); background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(255, 182, 39, 0.1));">
+                    <div
+                        style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);">
+                        <i class="fab fa-youtube" style="font-size: 2.5rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">YouTube</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6;">
+                        Watch our educational videos, DIY tips, and project walkthroughs. Subscribe for weekly plumbing
+                        advice!</p>
+                    <div
+                        style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                        <div
+                            style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">
+                            3.8K</div>
+                        <div style="font-size: 0.875rem; color: var(--text-secondary);">Subscribers</div>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;">
+                        <i class="fab fa-youtube"></i> Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header fade-in-down">
+                <h2 class="section-title">Before You <span class="gradient-text">Call</span></h2>
+                <p class="section-subtitle">Helpful information to prepare for your service request</p>
+            </div>
+            <div class="grid grid-2" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card fade-in-left stagger-1">
+                    <h3
+                        style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--primary); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-list-check" style="color: var(--primary);"></i>
+                        Information Checklist
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div
+                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.75rem; border-left: 4px solid var(--primary);">
+                            <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Property
+                                Details</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Address, property type, access
+                                instructions</div>
+                        </div>
+                        <div
+                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.75rem; border-left: 4px solid var(--secondary);">
+                            <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Problem
+                                Description</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">When it started, severity,
+                                affected areas</div>
+                        </div>
+                        <div
+                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.75rem; border-left: 4px solid var(--success);">
+                            <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Urgency
+                                Level</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Emergency, urgent, or can
+                                schedule</div>
+                        </div>
+                        <div
+                            style="padding: 1rem; background: var(--bg-secondary); border-radius: 0.75rem; border-left: 4px solid var(--warning);">
+                            <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">
+                                Availability</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Preferred dates and times for
+                                service</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card fade-in-right stagger-2">
+                    <h3
+                        style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--secondary); display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-question-circle" style="color: var(--secondary);"></i>
+                        Common Questions
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem;">
+                            <div
+                                style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary); font-size: 1.1rem;">
+                                Do I need to be home?</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                Yes, someone 18+ must be present during the service. We'll confirm your availability
+                                when scheduling.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem;">
+                            <div
+                                style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary); font-size: 1.1rem;">
+                                What should I prepare?</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                Clear access to the problem area, remove any obstacles, and have your ID ready for
+                                verification.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem;">
+                            <div
+                                style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary); font-size: 1.1rem;">
+                                Can I cancel or reschedule?</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                Yes, with at least 24 hours notice for scheduled appointments. Emergency calls can be
+                                modified anytime.</p>
+                        </div>
+                        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 0.75rem;">
+                            <div
+                                style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary); font-size: 1.1rem;">
+                                Payment timing?</div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; margin: 0;">
+                                Payment is due upon completion of work. We accept cash, cards, checks, and offer
+                                financing options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"
+        style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 5rem 0; position: relative; overflow: hidden;">
+        <div class="animated-bg">
+            <div class="shape"
+                style="background: rgba(255,255,255,0.1); width: 300px; height: 300px; top: -100px; right: -100px; animation: float 15s infinite;">
+            </div>
+            <div class="shape"
+                style="background: rgba(255,255,255,0.1); width: 200px; height: 200px; bottom: -50px; left: -50px; animation: float 12s infinite reverse;">
+            </div>
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; color: white;">Ready to Work With
+                    Us?</h2>
+                <p style="font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95;">
+                    Contact us today and experience professional plumbing services you can trust. Available 24/7 for
+                    emergencies!
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn hover-scale"
+                        style="background: white; color: var(--primary); font-size: 1.1rem; padding: 1rem 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fas fa-phone"></i> Call Now
+                    </button>
+                    <button class="btn hover-scale"
+                        style="background: transparent; border: 2px solid white; color: white; font-size: 1.1rem; padding: 1rem 2.5rem; backdrop-filter: blur(10px);">
+                        <i class="fas fa-calendar"></i> Schedule Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 class="footer-title">PlumberPro Plumbing</h3>
+                    <p style="color: var(--text-secondary);">Professional plumbing services you can trust. Available
+                        24/7 for all your plumbing needs.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Emergency Plumbing</a></li>
+                        <li><a href="services.html">Drain Cleaning</a></li>
+                        <li><a href="services.html">Water Heaters</a></li>
+                        <li><a href="services.html">Pipe Repair</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@plumberpro.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main St, City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PlumberPro Plumbing. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="tel:5551234567" class="social-link" title="Call Us">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script src="animations.js"></script>
+
+    <script src="advanced-animations.js"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+            event.target.reset();
+        }
+    </script>
+    <script src="hero-animation.js"></script>
+</body>
+
+</html>

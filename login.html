@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PlumberPro Plumbing</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand"><span class="brand-logo-box">P</span>PlumberPro</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Home <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+                        <li><a href="home2.html" class="dropdown-item">Home 2</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">About Us</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="services.html" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item has-dropdown">
+                    <a class="navbar-link">
+                        Dashboard <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-dashboard.html" class="dropdown-item">User Dashboard</a></li>
+                        <li><a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+            </ul>
+            <div class="navbar-controls">
+                <button class="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="rtl-toggle" title="Toggle RTL"></button>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Wrapper to handle overflow -->
+    <div style="position: relative; width: 100%; min-height: 100vh; overflow-x: hidden;">
+        <!-- Login Container -->
+        <div class="login-container active" id="loginContainer">
+            <div class="animated-bg">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <div class="login-card" style="position: relative; z-index: 1;">
+                <div class="login-header">
+                    <h1 class="login-title gradient-text">PlumberPro</h1>
+                    <p class="login-subtitle">Welcome back! Please login to your account</p>
+                </div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" style="width: 16px; height: 16px;">
+                            <span style="font-size: 0.875rem; color: var(--text-secondary);">Remember me</span>
+                        </label>
+                        <a href="#" style="font-size: 0.875rem; color: var(--primary); font-weight: 500;">Forgot
+                            password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+
+                <div class="login-divider">OR</div>
+
+                <button class="btn btn-outline" style="width: 100%; margin-bottom: 0.75rem;">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button class="btn btn-outline" style="width: 100%; margin-bottom: 1.5rem;">
+                    <i class="fab fa-facebook"></i> Continue with Facebook
+                </button>
+
+                <div style="text-align: center;">
+                    <p style="color: var(--text-secondary);">
+                        Don't have an account? <a href="#" onclick="showRegister(event)"
+                            style="color: var(--primary); font-weight: 600;">Register here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Container -->
+        <div class="login-container hidden-right" id="registerContainer">
+            <div class="animated-bg">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <div class="login-card"
+                style="position: relative; z-index: 1; max-width: 450px; width: 100%; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 1.5rem; padding: 3rem; box-shadow: var(--shadow-xl);">
+                <div class="login-header">
+                    <h1 class="login-title gradient-text">Create Account</h1>
+                    <p class="login-subtitle">Join PlumberPro today and get started</p>
+                </div>
+
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="(555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" style="width: 16px; height: 16px; margin-top: 0.25rem;" required>
+                            <span style="font-size: 0.875rem; color: var(--text-secondary);">
+                                I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a
+                                    href="#" style="color: var(--primary);">Privacy Policy</a>
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1.5rem;">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                </form>
+
+                <div style="text-align: center;">
+                    <p style="color: var(--text-secondary);">
+                        Already have an account? <a href="#" onclick="showLogin(event)"
+                            style="color: var(--primary); font-weight: 600;">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
+    <script src="rtltoggle.js"></script>
+    <script src="advanced-animations.js"></script>
+    <script>
+        // Notification function
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'linear-gradient(135deg, #ef4444, #dc2626)'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 0.75rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                max-width: 400px;
+                font-weight: 600;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            showNotification('Login successful! Redirecting to dashboard...', 'success');
+            setTimeout(() => {
+                window.location.href = 'user-dashboard.html';
+            }, 1500);
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            showNotification('Account created successfully! Please login.', 'success');
+            setTimeout(() => {
+                showLogin(event);
+            }, 1500);
+        }
+
+        function showRegister(event) {
+            if (event) event.preventDefault();
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
+
+            // Login slides out to left
+            loginContainer.classList.remove('active');
+            loginContainer.classList.add('hidden-left');
+
+            // Register slides in from right
+            registerContainer.classList.remove('hidden-right');
+            registerContainer.classList.add('active');
+        }
+
+        function showLogin(event) {
+            if (event) event.preventDefault();
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
+
+            // Register slides out to right
+            registerContainer.classList.remove('active');
+            registerContainer.classList.add('hidden-right');
+
+            // Login slides in from left
+            loginContainer.classList.remove('hidden-left');
+            loginContainer.classList.add('active');
+        }
+
+        // Add animation styles
+        if (!document.getElementById('notificationStyles')) {
+            const style = document.createElement('style');
+            style.id = 'notificationStyles';
+            style.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(400px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                @keyframes slideOutRight {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(400px);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    </script>
+    <script src="hero-animation.js"></script>
+</body>
+
+</html>
