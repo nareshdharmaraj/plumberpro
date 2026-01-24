@@ -299,6 +299,11 @@ img {
   gap: 1rem;
 }
 
+[dir="rtl"] .navbar .container {
+  flex-direction: row-reverse;
+}
+
+
 .navbar-brand {
   flex-shrink: 0;
 }
@@ -747,6 +752,15 @@ body[dir="rtl"] .dropdown-menu {
   border-top: 1px solid var(--border-color);
   padding: 3rem 0 1.5rem;
   margin-top: 5rem;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100vw !important;
+}
+
+.footer .container {
+  max-width: 100%;
+  padding: 0 3rem;
 }
 
 .footer-content {
@@ -3639,4 +3653,880 @@ img.loaded {
     margin-left: 0;
     width: 100%;
   }
+}
+
+/* =========================================
+   Robust Grid System for Dashboard Alignment
+   ========================================= */
+
+/* Desktop defaults */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Ensure charts and cards don't overflow */
+  .card,
+  .dashboard-card {
+    min-width: 0;
+  }
+}
+.quote-badge {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    font-size: 2.5rem;
+    z-index: 1;
+    margin-bottom: 1rem;
+    opacity: 1;
+}
+
+.quote-badge i {
+    display: block;
+}
+
+.quote-badge-primary {
+    color: #FF6B35;
+    background: none;
+    box-shadow: none;
+}
+
+.quote-badge-secondary {
+    color: #6366f1;
+    background: none;
+    box-shadow: none;
+}
+
+.quote-badge-success {
+    color: #22c55e;
+    background: none;
+    box-shadow: none;
+}
+
+/* Remove the centering media query as it's now always centered */
+@media (max-width: 768px) {
+    .quote-badge {
+        left: auto;
+        transform: none;
+    }
+}
+.quote-badge-home2 {
+    color: #667eea;
+    background: none;
+    box-shadow: none;
+}
+/* Pricing Card Enhancements */
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent !important;
+    background: var(--card-bg, #fff);
+    position: relative;
+    overflow: visible !important;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    z-index: 1;
+}
+
+/* Pseudo-element for smooth gradient fade */
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.pricing-card .btn {
+    transition: all 0.3s ease;
+}
+
+/* Basic Plan - Bronze Hover */
+.pricing-card.basic-plan:hover {
+    border-color: #CD7F32 !important;
+    box-shadow: 0 20px 40px rgba(205, 127, 50, 0.15);
+    background: transparent;
+    /* Let pseudo show through */
+}
+
+.pricing-card.basic-plan::before {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(184, 115, 51, 0.05));
+    border-radius: 0.75rem;
+    /* Match card radius if needed, usually inherit works but being safe */
+}
+
+.pricing-card.basic-plan:hover::before {
+    opacity: 1;
+}
+
+.pricing-card.basic-plan:hover .btn {
+    background: #CD7F32;
+    color: white;
+}
+
+/* Premium Plan - Silver Hover */
+.pricing-card.premium-plan:hover {
+    border-color: #C0C0C0 !important;
+    box-shadow: 0 20px 60px rgba(192, 192, 192, 0.3);
+    background: transparent;
+}
+
+.pricing-card.premium-plan::before {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.15), rgba(169, 169, 169, 0.08));
+}
+
+.pricing-card.premium-plan:hover::before {
+    opacity: 1;
+}
+
+.pricing-card.premium-plan:hover .btn {
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    color: white;
+}
+
+/* Enterprise Plan - Gold Hover */
+.pricing-card.enterprise-plan:hover {
+    border-color: #FFD700 !important;
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+    background: transparent;
+}
+
+.pricing-card.enterprise-plan::before {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 223, 0, 0.08));
+}
+
+.pricing-card.enterprise-plan:hover::before {
+    opacity: 1;
+}
+
+.pricing-card.enterprise-plan:hover .btn {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: white;
+}
+
+/* Fix for Most Popular Badge */
+.most-popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    color: white;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 12px rgba(192, 192, 192, 0.4);
+    z-index: 10;
+    width: max-content;
+}
+
+/* Fix for Testimonial Quote Badges visibility */
+.testimonial-card,
+.card.testimonial-card,
+.home2-feature-card,
+.process-step {
+    overflow: visible !important;
+}
+
+.testimonial-card,
+.card.testimonial-card {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.testimonial-card>div[style*="display: flex"],
+.card.testimonial-card>div[style*="display: flex"] {
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Ensure text is readable and centered */
+.testimonial-card .card-text,
+.card.testimonial-card .card-text {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+}
+
+/* Service Process Step Fix */
+.process-step-card {
+    overflow: visible !important;
+    margin-top: 1.5rem;
+}
+
+.step-number {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+/* Grid Fixes - Restored */
+.grid-2-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Ensure Dashboard Content Visibility */
+.dashboard-view.active .card,
+.dashboard-view.active .dashboard-card,
+.dashboard-view.active .grid div {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Floating Trigger Fix - Corrected Position and Size */
+.mobile-floating-trigger {
+    position: fixed;
+    left: 0;
+    top: 110px !important;
+    /* Move down below navbar */
+    width: 28px !important;
+    /* Narrower for semi-circle effect */
+    height: 36px !important;
+    /* Shorter vertical height */
+    background: var(--primary);
+    color: white;
+    border-radius: 0 50% 50% 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 14px;
+    /* Adjust icon size */
+}
+
+@media (min-width: 993px) {
+    .mobile-floating-trigger {
+        display: none !important;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* RTL / LTR Global Functionality Enhancements                                */
+/* -------------------------------------------------------------------------- */
+
+/* Base RTL Direction */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Reset and flip margins/paddings for common utilities */
+[dir="rtl"] .mr-1,
+[dir="rtl"] .mr-2,
+[dir="rtl"] .mr-3,
+[dir="rtl"] .mr-4,
+[dir="rtl"] .mr-5 {
+    margin-right: 0 !important;
+    margin-left: 0.25rem !important;
+}
+
+[dir="rtl"] .ml-1,
+[dir="rtl"] .ml-2,
+[dir="rtl"] .ml-3,
+[dir="rtl"] .ml-4,
+[dir="rtl"] .ml-5 {
+    margin-left: 0 !important;
+    margin-right: 0.25rem !important;
+}
+
+[dir="rtl"] .pr-1,
+[dir="rtl"] .pr-2,
+[dir="rtl"] .pr-3,
+[dir="rtl"] .pr-4,
+[dir="rtl"] .pr-5 {
+    padding-right: 0 !important;
+    padding-left: 0.25rem !important;
+}
+
+[dir="rtl"] .pl-1,
+[dir="rtl"] .pl-2,
+[dir="rtl"] .pl-3,
+[dir="rtl"] .pl-4,
+[dir="rtl"] .pl-5 {
+    padding-left: 0 !important;
+    padding-right: 0.25rem !important;
+}
+
+[dir="rtl"] .text-right {
+    text-align: left !important;
+}
+
+[dir="rtl"] .text-left {
+    text-align: right !important;
+}
+
+[dir="rtl"] .float-right {
+    float: left !important;
+}
+
+[dir="rtl"] .float-left {
+    float: right !important;
+}
+
+/* Flexbox Direction Flip */
+[dir="rtl"] .navbar-menu,
+[dir="rtl"] .navbar-controls,
+[dir="rtl"] .hero-content>div[style*="display: flex"],
+[dir="rtl"] .footer-content,
+[dir="rtl"] .grid,
+[dir="rtl"] .sub-navbar {
+    flex-direction: row-reverse;
+}
+
+/* Fix for mobile menu in RTL - Ensure it stays vertical */
+@media (max-width: 768px) {
+    [dir="rtl"] .navbar-menu {
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Keep certain flex containers unchanged */
+[dir="rtl"] .navbar .container {
+    flex-direction: row-reverse;
+}
+
+/* Cards and content alignment */
+[dir="rtl"] .card,
+[dir="rtl"] .dashboard-card,
+[dir="rtl"] .home2-feature-card,
+[dir="rtl"] .process-content,
+[dir="rtl"] .testimonial-card .card-text,
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    text-align: right;
+}
+
+/* Section headers center alignment should remain */
+[dir="rtl"] .section-header,
+[dir="rtl"] .section-header h2,
+[dir="rtl"] .section-header p {
+    text-align: center;
+}
+
+/* Flip border directions */
+[dir="rtl"] .sidebar-link.active {
+    border-left: none;
+    border-right: 3px solid var(--primary);
+}
+
+[dir="rtl"] div[style*="border-left:"],
+[dir="rtl"] div[style*="border-left :"] {
+    border-left: none !important;
+}
+
+/* Icon positioning flip for buttons and links */
+[dir="rtl"] .btn i,
+[dir="rtl"] .sidebar-link i,
+[dir="rtl"] .navbar-link i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Dropdown menu positioning */
+[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Dashboard sidebar */
+[dir="rtl"] .dashboard-sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+}
+
+[dir="rtl"] .dashboard-main {
+    margin-left: 0 !important;
+    margin-right: 280px !important;
+}
+
+/* Stats and flex item layouts */
+[dir="rtl"] .stats-card,
+[dir="rtl"] .dashboard-card-header {
+    flex-direction: row-reverse;
+}
+
+/* Hero section */
+[dir="rtl"] .hero-content {
+    text-align: right;
+    align-items: flex-end;
+}
+
+[dir="rtl"] .home2-hero-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .home2-hero h1 {
+    text-align: right;
+}
+
+/* Process steps */
+[dir="rtl"] .process-step {
+    direction: rtl;
+}
+
+[dir="rtl"] .process-number {
+    order: 2;
+}
+
+[dir="rtl"] .process-content {
+    order: 1;
+}
+
+/* Table alignment */
+[dir="rtl"] table,
+[dir="rtl"] th,
+[dir="rtl"] td {
+    text-align: right;
+}
+
+/* Form elements */
+[dir="rtl"] .form-control,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+}
+
+/* Footer */
+[dir="rtl"] .footer-content {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-links {
+    text-align: right;
+}
+
+/* Feature cards with icons */
+[dir="rtl"] .home2-feature-card>div[style*="display: flex"],
+[dir="rtl"] .card>div[style*="display: flex"] {
+    flex-direction: row-reverse;
+}
+
+/* Service area cards */
+[dir="rtl"] .service-area-card {
+    text-align: right;
+}
+
+/* Chevron icons flip */
+[dir="rtl"] .fa-chevron-right::before {
+    content: "\f053";
+}
+
+[dir="rtl"] .fa-chevron-left::before {
+    content: "\f054";
+}
+
+[dir="rtl"] .fa-arrow-right::before {
+    content: "\f060";
+}
+
+[dir="rtl"] .fa-arrow-left::before {
+    content: "\f061";
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 992px) {
+    [dir="rtl"] .dashboard-sidebar {
+        transform: translateX(100%);
+        right: 0;
+        left: auto;
+    }
+
+    [dir="rtl"] .dashboard-sidebar.active {
+        transform: translateX(0);
+    }
+
+    [dir="rtl"] .dashboard-main {
+        margin-right: 0 !important;
+    }
+}
+/* Dashboard Mobile Sidebar and Layout Styles */
+
+/* Base Styles for Mobile Dashboard */
+@media (max-width: 992px) {
+    .dashboard-container {
+        flex-direction: column;
+        position: relative;
+    }
+
+    /* Fixed Sidebar */
+    .dashboard-sidebar {
+        position: fixed;
+        top: 0;
+        left: -200px;
+        height: 100vh;
+        width: 200px;
+        z-index: 99999 !important;
+        /* High z-index */
+        transition: left 0.3s ease-in-out;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--bg-primary, #ffffff) !important;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dashboard-sidebar.active {
+        left: 0;
+    }
+
+    /* Main Content Area adjustments */
+    .dashboard-main {
+        width: 100%;
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
+    /* Overlay */
+    .dashboard-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        /* Just below sidebar */
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .dashboard-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Header Controls */
+    .sidebar-toggle-btn {
+        display: none !important;
+        /* Hide original hamburger */
+    }
+
+    /* Floating Arrow Trigger */
+    .mobile-floating-trigger {
+        position: fixed;
+        left: 0;
+        top: 130px;
+        /* Offset from top header */
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        /* Adjust color as needed */
+        color: white;
+        border-radius: 0 50% 50% 0;
+        /* Semi-circle on right */
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        z-index: 9000;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        border: none;
+        transition: left 0.3s ease;
+    }
+
+    /* Sidebar Header with Close Button */
+    .mobile-close {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: #000;
+        /* Black header like screenshot */
+        color: white;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .mobile-close h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .mobile-close button {
+        background: white;
+        color: black;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        /* Square with rounded corners */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Grid System Override */
+    .grid,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .dashboard-grid,
+    .grid-2-1 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    /* Force inline-styled grids to collapse */
+    div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Handle Chart Containers */
+    /* Ensure charts don't overflow or collapse */
+    .card canvas,
+    .dashboard-card canvas {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 250px !important;
+    }
+
+    /* Ensure Tables are scrollable */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Ensure Sidebar Link Text Visibility */
+    .sidebar-link span {
+        display: inline-block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Fix dashboard view visibility animations */
+    .dashboard-view {
+        opacity: 1 !important;
+        /* Force visibility overrides */
+        transform: none !important;
+    }
+
+    .scroll-reveal {
+        opacity: 1 !important;
+        /* disable scroll reveal on mobile to prevent hidden content */
+        transform: none !important;
+    }
+}
+
+/* Ensure toggle button hidden on desktop */
+@media (min-width: 993px) {
+    .sidebar-toggle-btn {
+        display: none !important;
+    }
+
+    .mobile-floating-trigger {
+        display: none !important;
+    }
+
+    .mobile-close {
+        display: none !important;
+    }
+
+    .dashboard-overlay {
+        display: none !important;
+    }
+}
+
+/* RTL Support for Mobile Dashboard */
+[dir="rtl"] .dashboard-sidebar {
+    left: auto;
+    right: -200px;
+    transition: right 0.3s ease-in-out;
+}
+
+[dir="rtl"] .dashboard-sidebar.active {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .mobile-floating-trigger {
+    left: auto;
+    right: 0;
+    border-radius: 50% 0 0 50%;
+    transform: rotate(180deg);
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+[dir="rtl"] .mobile-close button i {
+    transform: rotate(180deg);
+}
+/* Dashboard Layout Fixes for Desktop */
+@media (min-width: 993px) {
+    .dashboard-container {
+        display: flex !important;
+        min-height: calc(100vh - var(--navbar-height));
+        padding-top: var(--navbar-height);
+        position: relative;
+    }
+
+    .dashboard-sidebar {
+        width: 280px;
+        background: var(--bg-primary);
+        border-right: 1px solid var(--border-color);
+        height: calc(100vh - var(--navbar-height));
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        overflow-y: auto;
+        z-index: 100;
+        padding-bottom: 2rem;
+    }
+
+    .dashboard-main {
+        flex: 1;
+        margin-left: 0;
+        /* Sidebar removed */
+        padding: 2rem;
+        background: var(--bg-secondary);
+        min-height: calc(100vh - var(--navbar-height));
+        width: 100%;
+    }
+
+    /* Fix Sidebar Navigation Styling */
+    .sidebar-nav {
+        list-style: none;
+        padding: 1.5rem 1rem;
+    }
+
+    .sidebar-section {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 1.5rem 0 0.5rem 1rem;
+    }
+
+    .sidebar-section:first-child {
+        margin-top: 0;
+    }
+
+    .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--text-secondary);
+        transition: var(--transition);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .sidebar-link:hover {
+        background: var(--bg-secondary);
+        color: var(--primary);
+    }
+
+    .sidebar-link.active {
+        background: linear-gradient(90deg, rgba(255, 107, 53, 0.1), transparent);
+        color: var(--primary);
+        border-left: 3px solid var(--primary);
+    }
+
+    .sidebar-link i {
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+}
+
+/* Ensure content visibility */
+.dashboard-view {
+    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
