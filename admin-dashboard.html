@@ -17,6 +17,8 @@
                 padding-top: var(--navbar-height);
                 position: relative;
                 width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
                 background: var(--bg-secondary) !important;
             }
 
@@ -29,6 +31,7 @@
                 position: relative;
                 z-index: 1;
                 max-width: 1400px;
+                box-sizing: border-box;
                 /* Optional: Constrain width for better readability on huge screens */
             }
         }
@@ -156,6 +159,36 @@
         /* Fix "Today's Schedule" task items - ensure time is visible */
         .dashboard-main .card div[style*="font-weight: 600"] {
             color: var(--text-primary) !important;
+        }
+        
+        /* RTL specific dashboard fixes */
+        [dir="rtl"] .dashboard-container,
+        [dir="rtl"] .dashboard-main {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+        
+        [dir="rtl"] .dashboard-grid {
+            direction: rtl;
+        }
+        
+        [dir="rtl"] .sub-navbar {
+            direction: rtl;
+        }
+        
+        /* Ensure proper mobile responsiveness */
+        @media (max-width: 992px) {
+            .dashboard-container,
+            .dashboard-main {
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            [dir="rtl"] .dashboard-container,
+            [dir="rtl"] .dashboard-main {
+                margin: 0 !important;
+            }
         }
     </style>
 </head>
